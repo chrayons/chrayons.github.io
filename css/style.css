@@ -1,4 +1,89 @@
-/* activities page */
+/* CENTRED NAV */
+nav ul { list-style: none; padding: 0; margin: 16px 0; display: flex; gap: 24px; justify-content: center; }
+nav a { text-decoration: none; color: #98A1AE; }
+nav a[aria-current="page"]
+    { color: #353131; font-weight: 700; text-decoration: underline; text-underline-offset: 4px;}
+
+
+/* WORK SPOTS PAGE */
+:root{
+    --gap: 18px; /* vertical space between rows */
+    --radius: 22px; /* row corners */
+    --row-blue: #D6F2FF; /* loved bg */
+    --row-grey: #F3F5F6; /* to-try bg */
+    --header: #FAFBFC; /* header bar */
+    --text: #353131;
+}
+
+/* page layout */
+main { max-width: 1100px; margin: 0 auto; padding: 0 24px 64px; }
+
+/* header bar */
+.work-table{
+    width: 100%;
+    border-collapse: separate; /* rounded corners + spacing */
+    border-spacing: 0 var(--gap); /* space BETWEEN rows (not inside) */
+    color: var(--text);
+}
+
+.work-table thead th{
+    background: var(--header);
+    color: var(--text);
+    text-transform: uppercase;
+    text-align: left;
+    padding: 12px 16px;
+}
+.work-table thead th:first-child{ border-top-left-radius: 16px; border-bottom-left-radius: 16px; }
+.work-table thead th:last-child { border-top-right-radius: 16px; border-bottom-right-radius: 16px; }
+
+/* i want box shadow later - will try to debug so that it doesn't appear for every cell */
+.work-table tbody td,
+.work-table tbody th[scope="row"]{
+    background-clip: padding-box;
+    padding: 18px 16px;
+    vertical-align: middle;
+    border: none;
+    box-shadow: none;
+}
+
+/* round the left/right ends of each row */
+.work-table tbody tr > *:first-child{ border-top-left-radius: var(--radius); border-bottom-left-radius: var(--radius); }
+.work-table tbody tr > *:last-child { border-top-right-radius: var(--radius); border-bottom-right-radius: var(--radius); }
+
+/* automatic row colors based on your data attribute */
+.work-table tbody tr[data-status="loved"]  > *{ background: var(--row-blue); }
+.work-table tbody tr[data-status="to-try"] > *{ background: var(--row-grey); }
+
+/* name column = row header link */
+.work-table tbody th[scope="row"] a{
+    color: inherit;
+    font-weight: 700;
+    text-decoration: none;
+}
+/* hover behaviour */
+.work-table tbody th[scope="row"] a:hover{ text-decoration: underline; }
+
+/* status pill on the right */
+.work-table td:last-child{ text-align: left; }
+.work-table .status{
+    display: inline-block;
+    padding: 10px 16px;
+    background: #FDFDFD;
+    color: var(--text);
+    border-radius: 16px;
+    white-space: nowrap;
+}
+
+/* column sizing */
+.work-table thead th:nth-child(1){width: 120px;} /* borough */
+.work-table thead th:nth-child(2){width: 220px;} /* loc (address) */
+.work-table thead th:nth-child(3){width: 220px;} /* name */
+.work-table thead th:nth-child(4){width: 220px;} /* hours */
+.work-table thead th:nth-child(5){width: 80px;} /* wifi */
+.work-table thead th:nth-child(6){width: 220px;} /* type */
+.work-table thead th:nth-child(7){width: 160px;} /* status */
+
+/* ACITIVITES PAGE */
 :root{
     --gap: 32px; /* gap between different cards */
     --blue: #D6F2FF;   /* loved bg */
@@ -22,11 +107,6 @@
 * { box-sizing: border-box; }
 body { margin: 0; font-family: open sauce; }
 
-/* centred nav */
-nav ul { list-style: none; padding: 0; margin: 16px 0; display: flex; gap: 24px; justify-content: center; }
-nav a { text-decoration: none; color: #4b5563; }
-nav a[aria-current="page"] { color: #111; font-weight: 700; }
-
 .hero-title-serif {
     text-align: center;
     margin: 24px 0 32px;
@@ -47,7 +127,7 @@ nav a[aria-current="page"] { color: #111; font-weight: 700; }
   letter-spacing: -0.011em;
   text-align: center;
   margin: 24px 0 32px;
-    color: #BAE4F8
+    color: #BAE4F8;
 }
 
 .page-title {

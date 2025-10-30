@@ -1,8 +1,169 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Title</title>
-    </head>
-    <body></body>
+<head>
+    <meta charset="UTF-8">
+    <title>Activities</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header>
+      <nav aria-label="Primary">
+          <ul>
+              <li><a href="index.html">ABOUT</a></li>
+              <li><a href="activities.html">ACTIVITIES</a></li>
+              <li><a href="museums.html" aria-current="page">MUSEUMS</a></li>
+              <li><a href="activities.html">SIGHTSEEING</a></li>
+              <li><a href="workspots.html">WORK SPOTS</a></li>
+          </ul>
+      </nav>
+  </header>
+
+  <main>
+      <h1 class="page-title">museums</h1>
+      <!-- CARD LIST/COLUMNS - should turn into 3 columns with css -->
+      <section class="cards" aria-label="Museums list">
+          <!--CARD TEMPLATE — COPY THIS FOR NEW MUSEUMS
+            Change:
+            - data-status (on the first line)="to-do" or "loved" -> THIS WILL AFFECT CSS STYLING LATER
+            - tags text (update with location and status)
+            - img src + alt + credit
+            - title + paragraph content
+            -->
+            <!--
+            <article class="card" data-status="to-do">
+            <div class="card__tags">
+            <span class="tag">#location</span>
+            <span class="tag">#status</span>
+            </div>
+
+            <h2 class="card__title">Activity Title Here</h2>
+            <figure class="card__media">
+                <img src="img/placeholder.jpg" alt="Describe the museum image">
+                <figcaption class="card__credit">Image courtesy of …</figcaption>
+            </figure>
+
+            <div class="card__body">
+                <p>Write a short description for this card here.</p>
+                </div>
+            </article>
+            -->
+          <article class="card" data-status="to-do">
+              <div class="card__tags">
+                  <span class="tag">#brooklyn</span>
+                  <span class="tag">#to-do</span>
+              </div>
+              <h2 class="card__title">Urban Glass Workshop</h2>
+              <figure class="card__media">
+                  <img src="img/urbanglass.jpeg" alt="Image of handmade glass beads.">
+                  <figcaption class="card__credit">Image courtesy of <a href="https://urbanglass.org/classes/detail/intro-to-sparkly-beads-metals-foils-leaf-and-aventurine">Urban Glass</a>. </figcaption>
+              </figure>
+              <div class="card__body">
+                  <p>I would love to make a sparkly bead to add to my bracelets
+                      or make an earring from it. It’d be such a fun activity to do with your friends
+                      and exchange beads with each other for memory!
+                      This class in particular is $145.</p>
+                  </div>
+          </article>
+
+          <article class="card" data-status="to-do">
+              <div class="card__tags">
+                  <span class="tag">#brooklyn</span>
+                  <span class="tag">#to-do</span>
+              </div>
+              <h2 class="card__title">Nusprodukte lamp Workshop</h2>
+              <figure class="card__media">
+                  <img src="img/nusprodukt.jpeg" alt="Image of handmade lamps.">
+                  <figcaption class="card__credit">Image courtesy of
+                      <a href="https://www.instagram.com/p/DNCD_kHyHTq/?img_index=2">paloma.of.all.trades</a>.</figcaption>
+              </figure>
+              <div class="card__body">
+                  <p>I thought this workshop is really fun because the lamps you make are very unorthodox!
+                      It’s a bit stylish and seems like something you can’t find elsewhere. The class is $100-200. </p>
+              </div>
+          </article>
+
+          <article class="card" data-status="to-do">
+              <div class="card__tags">
+                  <span class="tag">#brooklyn</span>
+                  <span class="tag">#to-do</span>
+              </div>
+              <h2 class="card__title">Brooklyn Glass Ring Workshop</h2>
+              <figure class="card__media">
+                  <img src="img/brooklynglass.jpeg" alt="Image of handmade glass rings.">
+                  <figcaption class="card__credit">Image courtesy of
+                      <a href="https://brooklynglass.com/index.php/class/glass-rings-2/">Brooklyn Glass</a>.</figcaption>
+              </figure>
+              <div class="card__body">
+                  <p>A 3-hour glass ring class where you can expect to make around 3 rings!
+                      The class is about $215 and you need to book in advance.
+                      I think this would be such a great date idea and come back with friendship/couple accessories. </p>
+              </div>
+          </article>
+
+          <article class="card" data-status="to-do">
+              <div class="card__tags">
+                  <span class="tag">#brooklyn</span>
+                  <span class="tag">#to-do</span>
+              </div>
+              <h2 class="card__title">SRC Risograph Workshop</h2>
+              <figure class="card__media">
+                  <img src="img/secretrisoclub.png" alt="Image of a Pokemon Risograph workshop ad.">
+                  <figcaption class="card__credit">Image courtesy of
+                      <a href="https://secretrisoclub.com/Pokemon-Booster-Workshop">Secret Riso Club</a>.</figcaption>
+              </figure>
+              <div class="card__body">
+                  <p>This collaborative artist-run space and creative studio has independent publishing, art book production, and more!
+                      They usually have risograph classes a few times a month and we’d have to look at the website to see what
+                      kind of workshops are happening. They had a Pikachu riso
+                      print workshop awhile ago that I thought was quite cute.
+                      Classes range from around $60-$300 depending on the subject. </p>
+              </div>
+          </article>
+
+          <article class="card" data-status="to-do">
+              <div class="card__tags">
+                  <span class="tag">#manhattan</span>
+                  <span class="tag">#to-do</span>
+              </div>
+              <h2 class="card__title">Maybe Happy Ending Broadway Show</h2>
+              <figure class="card__media">
+                  <img src="img/maybehappyending.webp" alt="Image of Maybe Happy Ending cast.">
+                  <figcaption class="card__credit">Image courtesy of
+                      <a href="https://www.newyorktheatreguide.com/theatre-news/news/everything-you-need-to-know-about-maybe-happy-ending-on-broadway">Matthew Murphy and Evan Zimmerman</a>.</figcaption>
+              </figure>
+              <div class="card__body">
+                  <p>Basically adding here so I can remember to watch with my boyfriend. He really wanted to
+                      watch this one, and I love broadway!
+                      This would be a fun, cute, romantic entertainment, I think. </p>
+              </div>
+          </article>
+
+          <article class="card" data-status="to-do">
+              <div class="card__tags">
+                  <span class="tag">#brooklyn</span>
+                  <span class="tag">#to-do</span>
+              </div>
+              <h2 class="card__title">Lucky Risograph Workshop</h2>
+              <figure class="card__media">
+                  <img src="img/luckyrisograph.webp" alt="Image of a risograph print with a crab holding a heart saying 'xie xie'.">
+                  <figcaption class="card__credit">Image courtesy of
+                      <a href="https://luckyrisograph.press/workshops">Lucky Risograph</a>.</figcaption>
+              </figure>
+              <div class="card__body">
+              <p>This is a risograph printing press that works with local and international
+                  creators to reinterpret risograph with art books, zines, and projects.
+                  I LOVE the colours they have here. I feel like their workshops don’t happen
+                  often so we should try to catch one ASAP if we can! One class is around $200. </p>
+              </div>
+          </article>
+      </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Christina Lu. All rights reserved.</p>
+    </footer>
+
+</body>
 </html>
