@@ -1,8 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Title</title>
-    </head>
-    <body></body>
+<head>
+    <meta charset="UTF-8">
+    <title>christina’s nyc bucket list — About</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+    <body>
+    <header>
+        <nav aria-label="Primary">
+            <!-- this is an unordered list (requirement), but will also become our sticky navbar -->
+            <ul>
+                <li><a href="index.html" aria-current="page">About</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="work.html">Work Spots</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- hero title -->
+        <h1>
+            <span class="hero-title-sans">christina’s</span>
+            <br>
+            <span class="hero-title-serif">nyc bucket list</span>
+        </h1>
+        <!-- intro -->
+        <p class="intro">
+            When I moved from Vancouver to New York City, I was amazed by how much there is to do.
+            This site helps me collect the things I want to try and share them with friends, so we
+            have something fun to do besides just dinner or a movie.
+            <strong>Sightseeing and museum pages coming soon!</strong>
+        </p>
+
+        <!-- i want this to be 2 info cards, styling it with css later -->
+        <section aria-label="How this site works" class="notes">
+            <!-- note/card: unordered list with a nested list (required) -->
+            <article class="note" aria-labelledby="read-cards-title">
+                <h2 id="read-cards-title">HOW TO READ THE CARDS:</h2>
+                <ul>
+                    <li><strong>Grey items</strong> = on my to-try list.</li>
+                    <li>
+                        <strong>Blue items</strong> = been there, loved that.
+                        <!-- nested list (requirement) -->
+                        <ul>
+                            <li>If a blue card stays up, it’s a must-try!</li>
+                        </ul>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- note/card: ordered list (requirement) -->
+            <article class="note" aria-labelledby="use-site-title">
+                <h2 id="use-site-title">HOW TO USE THE WEBSITE:</h2>
+                <ol>
+                    <li>Go to the page you’re interested in.</li>
+                    <li>Read the cards to help you choose where to go.</li>
+                    <li>Click on a card for more information.</li>
+                </ol>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Christina Lu. All rights reserved.</p>
+    </footer>
+
+</body>
 </html>

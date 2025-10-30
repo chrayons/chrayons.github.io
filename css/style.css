@@ -1,0 +1,111 @@
+/* activities page */
+:root{
+    --gap: 32px; /* gap between different cards */
+    --blue: #D6F2FF;   /* loved bg */
+    --grey: #F3F5F6;   /* to-do bg */
+}
+
+@font-face {
+    font-family: 'Open Sauce';
+    src: url('/fonts/OpenSauceOne-Light.ttf') format('truetype');
+    font-weight: 300; /* Light */
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bellavoir Delight';
+  src: url('/fonts/BellavoirDelight.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; font-family: open sauce; }
+
+/* centred nav */
+nav ul { list-style: none; padding: 0; margin: 16px 0; display: flex; gap: 24px; justify-content: center; }
+nav a { text-decoration: none; color: #4b5563; }
+nav a[aria-current="page"] { color: #111; font-weight: 700; }
+
+.hero-title-serif {
+    text-align: center;
+    margin: 24px 0 32px;
+    font-family: 'Bellavoir Delight', serif;  /* regular + fallback */
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(48px, 12vw, 240px);
+    letter-spacing: -0.011em;
+    line-height: 1.2;
+}
+
+.hero-title-sans {
+  font-family: 'Open Sauce One', sans-serif;
+  font-weight: 700; /* this is bold */
+  font-style: normal;
+  font-size: clamp(48px, 6vw, 130px);
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+  text-align: center;
+  margin: 24px 0 32px;
+    color: #BAE4F8
+}
+
+.page-title {
+    text-align: center;
+    margin: 24px 0 32px;
+    font-family: 'Bellavoir Delight', serif;  /* regular + fallback */
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(48px, 12vw, 240px);
+    letter-spacing: -0.011em;
+    line-height: 1.2;
+}
+
+
+/* masonry-style 3 columns */
+.cards{
+    /* 3 columns with 32px between columns */
+    column-count: 3;
+    column-gap: var(--gap);
+    padding: 0 var(--gap); /* page side padding; should tweak later */
+}
+
+/* each card is like a block that can't break across columns */
+.card{
+    display: inline-block; /* required for CSS columns */
+    width: 100%; /* fill the column width */
+    margin: 0 0 var(--gap); /* vertical gap between cards */
+    break-inside: avoid; /* don’t split a card across columns */
+
+    /* card visuals */
+    border-radius: 32px; /* your 32px curve */
+    padding: 16px;
+    background: var(--grey); /* default (to-do) */
+}
+
+/* status-based automatic styling (from your data-status) */
+.card[data-status="to-do"]  { background: var(--grey); }
+.card[data-status="loved"]  { background: var(--blue); }
+
+/* tags / title */
+.card__tags { display: flex; gap: 8px; flex-wrap: wrap; font-size: .85rem; color: #6b7280; }
+.card__title { margin: 6px 0 8px; font-size: 1rem; line-height: 1.2; }
+
+/* media: image fills card width, height hugs content */
+.card__media { margin: 0; }
+.card__media img{
+    display: block;
+    width: 100%; /* fill width */
+    height: auto; /* hug height */
+    border-radius: 16px;
+}
+.card__credit { font-size: .75rem; color: #6b7280; margin-top: 6px; word-break: break-word; }
+.card__body { font-size: .95rem; line-height: 1.5; }
+
+/* responsive behaviour: drop to 2 columns, then 1 */
+@media (max-width: 768px){
+    .cards{ column-count: 2; }
+}
+@media (max-width: 576px){
+    .cards{ column-count: 1; }
+}
