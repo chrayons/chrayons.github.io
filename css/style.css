@@ -83,6 +83,9 @@ main { max-width: 1100px; margin: 0 auto; padding: 0 24px 64px; }
 .work-table thead th:nth-child(6){width: 220px;} /* type */
 .work-table thead th:nth-child(7){width: 160px;} /* status */
 
+
+
+
 /* ACITIVITES PAGE */
 :root{
     --gap: 32px; /* gap between different cards */
