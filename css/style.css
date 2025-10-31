@@ -171,7 +171,7 @@ h1.hero-title{
     background: #FDFDFD; /* white */
     padding: 24px 32px;
     border-radius: 16px;
-      /* keep width responsive */
+    /* keep width responsive */
     width: 100%;
     max-width: 600px; /* hug tight, but don’t stretch too wide */
     min-width: 300px;
@@ -199,6 +199,83 @@ h1.hero-title{
         flex-direction: column;
         align-items: center; /* center the cards */
     }
+}
+
+/* tilting the cards */
+/* let the articles overlap */
+.notes{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0; /* no gap so overlap looks natural */
+    position: relative; /* enables z-index on children */
+}
+
+/* make transforms feel a little smoother */
+.notes > article{
+    position: relative; /* needed for z-index */
+    transform-origin: center;
+    transition: opacity .25s ease, box-shadow .25s ease;
+}
+
+/* grey card: tilt counter-clockwise and drop slightly */
+.note-grey{
+    transform: rotate(-6deg) translateY(12px);
+    z-index: 1;
+}
+
+/* right/blue: tilt clockwise, nudge left so it overlaps the grey */
+.note-blue{
+    transform: rotate(7deg) translate(-32px, -8px);
+    z-index: 2; /* sit on top */
+}
+
+/* hover + focus mode */
+.notes:hover > article {
+    opacity: 0.5; /* dim everything */
+}
+.notes > article:hover {
+    opacity: 1; /* highlight the focused one */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12); /* deeper drop shadow */
+    z-index: 3;
+}
+
+/* mobile: undo the effect so they can be stacked - should look at other mobile breakpoints for consistency */
+@media (max-width: 900px){
+  .notes{
+      flex-direction: column;
+      gap: 40px;
+      align-items: stretch;
+    }
+
+    /* give each card a fluid width; cap this so they don’t feel huge */
+    .notes > article{
+        width: min(560px, 92vw);
+        transform-origin: center;
+    }
+
+    /* left card: pin to left edge, keep tilt (no overlap translate) */
+    note-grey{
+        margin-left: 0;
+        margin-right: auto; /* left aligned */
+        transform: rotate(-6deg); /* keep tilt only */
+    }
+
+    /* Right card: pin to right edge, keep tilt (no overlap translate) */
+    .note-blue{
+        margin-right: 0;
+        margin-left: auto; /* right aligned */
+        transform: rotate(7deg); /* keep tilt only */
+  }
+    /* let the inner fill the card; remove desktop cap */
+    note-inner{
+        max-width: 600px;
+  }
+}
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+    .notes > article{ transition: none; }
 }
 
 
@@ -401,7 +478,6 @@ body { margin: 0; font-family: open sauce; color: #353131;}
 
 /* hover/active interactions that apply only to the card surface */
 .card:hover .card__surface{
-    transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
 
