@@ -142,30 +142,65 @@ h1.hero-title{
 
 .notes{
     display: flex;
-    gap: 32px;
+    gap: 48px;
     justify-content: center;
+    align-items: flex-start; /* don't force equal heights */
     margin-top: 64px;
+}
 
+.notes > article {
+    flex: 1 1 0; /*i want equal width columns */
+    min-width: 0;
+    display: flex;
 }
 
 .note-blue {
     background: #BAE4F8;
-    padding: 64px;
+    padding: 32px;
     border-radius: 32px;
     box-shadow: 0 4.3px 12.89px rgba(0, 0, 0, 0.05);
 }
 .note-grey {
     background: #EDEFF1;
-    padding: 64px;
+    padding: 32px;
     border-radius: 32px;
     box-shadow: 0 4.3px 12.89px rgba(0, 0, 0, 0.05);
 }
 
 .note-inner{
     background: #FDFDFD; /* white */
-    padding: 32px;
+    padding: 24px 32px;
     border-radius: 16px;
+      /* keep width responsive */
+    width: 100%;
+    max-width: 600px; /* hug tight, but don’t stretch too wide */
+    min-width: 300px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
+
+/* remove browser default extra margins that add phantom space */
+.note-inner h2 {
+    margin: 0 0 12px;
+    line-height: 1.2;
+}
+.note-inner ul,
+.note-inner ol {
+    margin: 0;
+    padding-left: 1.25rem; /* keep bullets indented without big margins */
+}
+.note-inner li {
+  margin: 8px 0;
+}
+
+/* stack the cards on small screens */
+@media (max-width: 900px){
+    .notes {
+        flex-direction: column;
+        align-items: center; /* center the cards */
+    }
+}
+
 
 /* WORK SPOTS PAGE */
 :root{
