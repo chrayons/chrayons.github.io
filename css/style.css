@@ -83,7 +83,17 @@ main { max-width: 1100px; margin: 0 auto; padding: 0 24px 64px; }
 .work-table thead th:nth-child(6){width: 220px;} /* type */
 .work-table thead th:nth-child(7){width: 160px;} /* status */
 
+/* one outer shadow per row */
+.work-table tbody tr {
+    /* the row is a “layer”, then we cast a shadow from it */
+    filter: drop-shadow(0 4px 13px rgba(0,0,0,0.05));
+    -webkit-filter: drop-shadow(0 4px 13px rgba(0,0,0,0.05));
+}
 
+/* make sure cell backgrounds don’t bleed past corners */
+.work-table tbody tr > * {
+  background-clip: padding-box;
+}
 
 
 /* ACITIVITES PAGE */
