@@ -13,8 +13,19 @@ nav a[aria-current="page"]
     margin-top: 64px;
 }
 
-.note{
-    background: #F3F5F6; /* light grey */
+.note-blue {
+    background: #BAE4F8;
+    padding: 64px;
+    border-radius: 32px;
+}
+.note-grey {
+    background: #EDEFF1;
+    padding: 64px;
+    border-radius: 32px;
+}
+
+.note-inner{
+    background: #FDFDFD; /* white */
     padding: 32px;
     border-radius: 16px;
     width: 320px;

@@ -36,8 +36,10 @@
 
         <!-- i want this to be 2 info cards, styling it with css later -->
         <section aria-label="How this site works" class="notes">
+            <!-- grey card -->
             <!-- note/card: unordered list with a nested list (required) -->
-            <article class="note" aria-labelledby="read-cards-title">
+            <article class="note-grey" aria-labelledby="read-cards-title">
+                <div class = "note-inner">
                 <h2 id="read-cards-title">HOW TO READ THE CARDS:</h2>
                 <ul>
                     <li><strong>Grey items</strong> = on my to-try list.</li>
@@ -49,16 +51,19 @@
                         </ul>
                     </li>
                 </ul>
+                </div>
             </article>
-
+            <!-- blue card -->
             <!-- note/card: ordered list (requirement) -->
-            <article class="note" aria-labelledby="use-site-title">
+            <article class="note-blue" aria-labelledby="use-site-title">
+                <div class="note-inner">
                 <h2 id="use-site-title">HOW TO USE THE WEBSITE:</h2>
                 <ol>
                     <li>Go to the page you’re interested in.</li>
                     <li>Read the cards to help you choose where to go.</li>
                     <li>Click on a card for more information.</li>
                 </ol>
+                </div>
             </article>
         </section>
     </main>
