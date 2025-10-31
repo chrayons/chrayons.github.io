@@ -283,32 +283,32 @@ body { margin: 0; font-family: open sauce; }
 
 /* masonry-style 3 columns */
 .cards{
-    /* 3 columns with 32px between columns */
     column-count: 3;
     column-gap: var(--gap);
-    padding: 0 var(--gap); /* page side padding; should tweak later */
+    padding: 0 var(--gap);
 }
 
-/* each card is like a block that can't break across columns */
+/* the item that flows in columns (no shadow here) */
 .card{
-    display: inline-block; /* required for CSS columns */
-    width: 100%; /* fill the column width */
-    margin: 0 0 var(--gap); /* vertical gap between cards */
-    break-inside: avoid; /* don’t split a card across columns */
-    box-shadow: 0 4.3px 12.89px rgba(0, 0, 0, 0.05);
+    display: block;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    margin: 0 0 var(--gap);
+}
 
-
-    /* card visuals */
-    border-radius: 32px; /* your 32px curve */
+/* the visual box */
+.card__surface{
+    background: var(--grey);
+    border-radius: 32px;
     padding: 16px;
-    background: var(--grey); /* default (to-do) */
+    box-shadow: 0 4.3px 12.89px rgba(0,0,0,.05);
 }
 
 /* status-based automatic styling (from your data-status) */
-.card[data-status="to-do"]  { background: var(--grey); }
-.card[data-status="loved"]  { background: var(--blue); }
+.card[data-status="to-do"] .card__surface { background: var(--grey); }
+.card[data-status="loved"] .card__surface { background: var(--blue); }
 
-/* tags / title */
+/* tags + title */
 .card__tags { display: flex; gap: 8px; flex-wrap: wrap; color: #6b7280; }
 .card__title { margin: 6px 0 8px; }
 
