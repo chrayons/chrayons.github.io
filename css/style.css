@@ -6,6 +6,45 @@ nav a[aria-current="page"]
 
 
 /* INDEX PAGE */
+h1.hero-title{
+    margin: 0;
+    padding: 0;
+    display: block;
+    text-align: left;
+}
+
+/* top line */
+.hero-title-sans{
+    display: block;
+    margin-top: 8vw;
+    margin-bottom: 0; /* no extra space */
+    line-height: .85; /* tighter */
+    font-family: 'Open Sauce One', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: clamp(48px, 6vw, 130px);
+    letter-spacing: -0.011em;
+    color: #BAE4F8;
+}
+
+/* second line */
+.hero-title-serif{
+    display: block;
+    margin-top: -0.28em; /* overlap for the top */
+    margin-bottom: 8vw;;
+    line-height: .8; /* tight line box */
+    font-family: 'Bellavoir Delight', serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(48px, 12vw, 240px);
+    letter-spacing: -0.011em;
+}
+
+/* small-screen */
+@media (max-width: 800px){
+  .hero-title-serif { margin-top: -0.22em; }
+}
+
 .notes{
     display: flex;
     gap: 32px;
@@ -28,7 +67,6 @@ nav a[aria-current="page"]
     background: #FDFDFD; /* white */
     padding: 32px;
     border-radius: 16px;
-    width: 320px;
 }
 
 /* WORK SPOTS PAGE */
@@ -145,29 +183,6 @@ main { max-width: 1100px; margin: 0 auto; padding: 0 24px 64px; }
 
 * { box-sizing: border-box; }
 body { margin: 0; font-family: open sauce; }
-
-.hero-title-serif {
-    text-align: center;
-    margin: 24px 0 32px;
-    font-family: 'Bellavoir Delight', serif;  /* regular + fallback */
-    font-weight: 400;
-    font-style: normal;
-    font-size: clamp(48px, 12vw, 240px);
-    letter-spacing: -0.011em;
-    line-height: 1.2;
-}
-
-.hero-title-sans {
-  font-family: 'Open Sauce One', sans-serif;
-  font-weight: 700; /* this is bold */
-  font-style: normal;
-  font-size: clamp(48px, 6vw, 130px);
-  line-height: 1.5;
-  letter-spacing: -0.011em;
-  text-align: center;
-  margin: 24px 0 32px;
-    color: #BAE4F8;
-}
 
 .page-title {
     text-align: center;
