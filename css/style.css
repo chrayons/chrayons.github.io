@@ -5,6 +5,21 @@ nav a[aria-current="page"]
     { color: #353131; font-weight: 700; text-decoration: underline; text-underline-offset: 4px;}
 
 
+/* INDEX PAGE */
+.notes{
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    margin-top: 64px;
+}
+
+.note{
+    background: #F3F5F6; /* light grey */
+    padding: 32px;
+    border-radius: 16px;
+    width: 320px;
+}
+
 /* WORK SPOTS PAGE */
 :root{
     --gap: 18px; /* vertical space between rows */
@@ -204,3 +219,5 @@ body { margin: 0; font-family: open sauce; }
 @media (max-width: 576px){
     .cards{ column-count: 1; }
 }
+
+
