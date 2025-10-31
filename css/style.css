@@ -100,23 +100,33 @@ footer {
 }
 
 /* INDEX PAGE */
-h1.hero-title{
-    margin: 0;
-    padding: 0;
+:root{
+    --page-max: clamp(800px, 86vw, 1600px);
+    --page-pad: clamp(16px, 3vw, 32px);
+}
+
+.hero-container{
+    width: min(100%, var(--page-max));
+    margin-inline: auto;
+    padding-inline: var(--page-pad);
+    padding-top: clamp(56px,8vw,140px);
+}
+
+.hero-title span{
     display: block;
-    text-align: left;
+    width: 100%;
+    margin-inline: auto;
 }
 
 /* top line */
 .hero-title-sans{
     display: block;
-    margin-top: 8vw;
     margin-bottom: 0; /* no extra space */
     line-height: .85; /* tighter */
     font-family: 'Open Sauce One', sans-serif;
     font-weight: 700;
     font-style: normal;
-    font-size: clamp(48px, 6vw, 130px);
+    font-size: clamp(32px, 6vw, 180px);
     letter-spacing: -0.011em;
     color: #BAE4F8;
 }
@@ -125,11 +135,12 @@ h1.hero-title{
 .hero-title-serif{
     display: block;
     margin-top: -0.28em; /* overlap for the top */
-    margin-bottom: 8vw;
+    margin-bottom: clamp(16px, 2.5vw, 40px);
     line-height: .8; /* tight line box */
     font-family: 'Bellavoir Delight', serif;
     font-weight: 400;
     font-style: normal;
+    flex-flow: nowrap;
     font-size: clamp(48px, 12vw, 240px);
     letter-spacing: -0.011em;
     color: #353131;
@@ -137,21 +148,29 @@ h1.hero-title{
 
 /* small-screen */
 @media (max-width: 800px){
-  .hero-title-serif { margin-top: -0.22em; }
+    .hero-title-serif { margin-top: -0.22em; }
 }
 
 .notes{
+    width: min(100%, var(--page-max));
+    margin-inline: auto;
+    padding-inline: var(--page-pad);
     display: flex;
-    gap: 48px;
+    gap: 0;
     justify-content: center;
     align-items: flex-start; /* don't force equal heights */
-    margin-top: 64px;
+    margin-top: clamp(32px, 5vw, 120px);
+    overflow: visible;
+    margin-bottom: clamp(56px,8vw,140px);
 }
 
 .notes > article {
     flex: 1 1 0; /*i want equal width columns */
     min-width: 0;
     display: flex;
+    position: relative;
+    transform-origin: center;
+    transition: opacity .25s ease, box-shadow .25s ease;
 }
 
 .note-blue {
@@ -198,6 +217,7 @@ h1.hero-title{
     .notes {
         flex-direction: column;
         align-items: center; /* center the cards */
+        width: min(100%, var(--page-max));
     }
 }
 
@@ -209,13 +229,6 @@ h1.hero-title{
     align-items: flex-start;
     gap: 0; /* no gap so overlap looks natural */
     position: relative; /* enables z-index on children */
-}
-
-/* make transforms feel a little smoother */
-.notes > article{
-    position: relative; /* needed for z-index */
-    transform-origin: center;
-    transition: opacity .25s ease, box-shadow .25s ease;
 }
 
 /* grey card: tilt counter-clockwise and drop slightly */
@@ -230,47 +243,46 @@ h1.hero-title{
     z-index: 2; /* sit on top */
 }
 
-/* hover + focus mode */
-.notes:hover > article {
-    opacity: 0.5; /* dim everything */
-}
-.notes > article:hover {
-    opacity: 1; /* highlight the focused one */
-    box-shadow: 0 12px 30px rgba(0,0,0,0.12); /* deeper drop shadow */
-    z-index: 3;
-}
-
 /* mobile: undo the effect so they can be stacked - should look at other mobile breakpoints for consistency */
 @media (max-width: 900px){
   .notes{
       flex-direction: column;
       gap: 40px;
       align-items: stretch;
+      padding-inline: 16px;
+      overflow-x: clip; /* get rid of horizontal scroll when elements are too long*/
     }
 
     /* give each card a fluid width; cap this so they don’t feel huge */
     .notes > article{
-        width: min(560px, 92vw);
+        width: min(500px, 80vw);
         transform-origin: center;
     }
 
     /* left card: pin to left edge, keep tilt (no overlap translate) */
-    note-grey{
+    .note-grey{
         margin-left: 0;
         margin-right: auto; /* left aligned */
-        transform: rotate(-6deg); /* keep tilt only */
+        transform: rotate(-6deg);
     }
 
-    /* Right card: pin to right edge, keep tilt (no overlap translate) */
+    /* right card: pin to right edge, keep tilt (no overlap translate) */
     .note-blue{
         margin-right: 0;
         margin-left: auto; /* right aligned */
-        transform: rotate(7deg); /* keep tilt only */
-  }
+        transform: rotate(7deg);
+    }
+
     /* let the inner fill the card; remove desktop cap */
-    note-inner{
-        max-width: 600px;
-  }
+    .note-inner{
+        max-width: none;
+        font-size: clamp(10px, 3vw, 12px);
+        padding: clamp(20px, 4vw, 32px);
+    }
+
+    .note-inner h2 {
+        font-size: clamp(14px, 5vw, 18px);
+    }
 }
 
 /* respect reduced motion */
@@ -397,6 +409,7 @@ body { margin: 0; font-family: open sauce; color: #353131;}
 .page-title {
     text-align: center;
     margin: 24px 0 32px;
+    padding-top: clamp(56px,8vw,140px);
     font-family: 'Bellavoir Delight', serif;  /* regular + fallback */
     font-weight: 400;
     font-style: normal;

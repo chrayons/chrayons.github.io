@@ -21,25 +21,27 @@
     </header>
 
     <main>
-        <!-- hero title -->
-        <h1>
-            <span class="hero-title-sans">christina’s</span>
-            <span class="hero-title-serif">nyc bucket list</span>
-        </h1>
-        <!-- intro -->
-        <p class="intro">
-            When I moved from Vancouver to New York City, I was amazed by how much there is to do.
-            This site helps me collect the things I want to try and share them with friends, so we
-            have something fun to do besides just dinner or a movie.
-        </p>
+        <!-- hero title - now a section so that we can center these elements with css -->
+        <section class="hero-container">
+            <h1 class= "hero-title">
+                <span class="hero-title-sans">christina’s</span>
+                <span class="hero-title-serif">nyc bucket list</span>
+            </h1>
+            <!-- intro -->
+            <p class="intro text-body">
+                When I moved from Vancouver to New York City, I was amazed by how much there is to do.
+                This site helps me collect the things I want to try and share them with friends, so we
+                have something fun to do besides just dinner or a movie.
+            </p>
+        </section>
 
         <!-- i want this to be 2 info cards, styling it with css later -->
         <section aria-label="How this site works" class="notes">
             <!-- grey card -->
             <!-- note/card: unordered list with a nested list (required) -->
             <article class="note-grey" aria-labelledby="read-cards-title">
-                <div class = "note-inner">
-                <h2 id="read-cards-title">HOW TO READ THE CARDS:</h2>
+                <div class = "note-inner text-body">
+                <h2 id="read-cards-title text-small-header">HOW TO READ THE CARDS:</h2>
                 <ul>
                     <li><strong>Grey items</strong> = on my to-try list.</li>
                     <li>
@@ -55,8 +57,8 @@
             <!-- blue card -->
             <!-- note/card: ordered list (requirement) -->
             <article class="note-blue" aria-labelledby="use-site-title">
-                <div class="note-inner">
-                <h2 id="use-site-title">HOW TO USE THE WEBSITE:</h2>
+                <div class="note-inner text-body">
+                <h2 id="use-site-title text-small-header">HOW TO USE THE WEBSITE:</h2>
                 <ol>
                     <li>Go to the page you’re interested in.</li>
                     <li>Read the cards to help you choose where to go.</li>
