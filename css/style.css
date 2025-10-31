@@ -72,6 +72,18 @@
     letter-spacing: var(--ls-tight);
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity .2s ease, text-decoration-color .2s ease;
+}
+
+a:hover,
+a:focus-visible {
+    text-decoration: underline;
+}
+
 /* CENTRED NAV */
 nav ul { list-style: none; padding: 0; margin: 16px 0; display: flex; gap: 24px; justify-content: center; }
 nav a { text-decoration: none; color: #98A1AE; }
@@ -113,13 +125,14 @@ h1.hero-title{
 .hero-title-serif{
     display: block;
     margin-top: -0.28em; /* overlap for the top */
-    margin-bottom: 8vw;;
+    margin-bottom: 8vw;
     line-height: .8; /* tight line box */
     font-family: 'Bellavoir Delight', serif;
     font-weight: 400;
     font-style: normal;
     font-size: clamp(48px, 12vw, 240px);
     letter-spacing: -0.011em;
+    color: #353131;
 }
 
 /* small-screen */
@@ -267,7 +280,7 @@ main { max-width: 1100px; margin: 0 auto; padding: 0 24px 64px; }
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; font-family: open sauce; }
+body { margin: 0; font-family: open sauce; color: #353131;}
 
 .page-title {
     text-align: center;
@@ -278,8 +291,8 @@ body { margin: 0; font-family: open sauce; }
     font-size: clamp(48px, 12vw, 240px);
     letter-spacing: -0.011em;
     line-height: 1.2;
+    color: #353131
 }
-
 
 /* masonry-style 3 columns */
 .cards{
@@ -300,7 +313,7 @@ body { margin: 0; font-family: open sauce; }
 .card__surface{
     background: var(--grey);
     border-radius: 32px;
-    padding: 16px;
+    padding: 40px;
     box-shadow: 0 4.3px 12.89px rgba(0,0,0,.05);
 }
 
@@ -310,7 +323,7 @@ body { margin: 0; font-family: open sauce; }
 
 /* tags + title */
 .card__tags { display: flex; gap: 8px; flex-wrap: wrap; color: #6b7280; }
-.card__title { margin: 6px 0 8px; }
+.card__title { margin: 32px 0 16px; }
 
 /* media: image fills card width, height hugs content */
 .card__media { margin: 0; }
@@ -321,7 +334,38 @@ body { margin: 0; font-family: open sauce; }
     border-radius: 16px;
 }
 .card__credit { font-size: .75rem; color: #6b7280; margin-top: 6px; word-break: break-word; }
-.card__body { font-size: .95rem; line-height: 1.5; }
+.card__body { line-height: 1.5; }
+
+/* make whole card clickable */
+.card{
+    position: relative; /* needed so overlay positions to card */
+}
+
+/* stretched overlay link */
+.card__overlay{
+    position: absolute;
+    inset: 0; /* fill entire card area */
+    z-index: 1;
+    border-radius: 32px; /* match card corner */
+    cursor: pointer;
+}
+
+/* any real links inside the card sit above overlay */
+.card__surface a{
+    position: relative;
+    z-index: 2;
+}
+
+/* hover/active interactions that apply only to the card surface */
+.card:hover .card__surface{
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+/* fade others */
+.cards:hover .card:not(:hover) .card__surface{
+    opacity: .40;
+}
 
 /* responsive behaviour: drop to 2 columns, then 1 */
 @media (max-width: 768px){
