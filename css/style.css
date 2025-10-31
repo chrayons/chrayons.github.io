@@ -169,6 +169,8 @@ body { margin: 0; font-family: open sauce; }
     width: 100%; /* fill the column width */
     margin: 0 0 var(--gap); /* vertical gap between cards */
     break-inside: avoid; /* don’t split a card across columns */
+    box-shadow: 0 4.3px 12.89px rgba(0, 0, 0, 0.05);
+
 
     /* card visuals */
     border-radius: 32px; /* your 32px curve */
