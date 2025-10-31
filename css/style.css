@@ -1,3 +1,77 @@
+/* UNIVERSAL FONT STYLES / GUIDES */
+:root{
+    --font-sans: "Open Sauce Sans", system-ui, sans-serif;
+    --font-serif: "Bellavoir Delight", serif;
+
+    /* helpful letter-spacing tokens */
+    --ls-wide: 0.01em;     /* +1%  */
+    --ls-tight: -0.011em;  /* -1.1% */
+}
+/* body text */
+.text-body{
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.5; /* 150% */
+  letter-spacing: var(--ls-wide);
+}
+
+/* note */
+.text-note{
+    font-family: var(--font-sans);
+    font-weight: 300; /* light */
+    font-size: 14px;
+    line-height: 1.2; /* 120% */
+    letter-spacing: var(--ls-wide);
+}
+
+/* small note */
+.text-note-sm{
+    font-family: var(--font-sans);
+    font-weight: 300; /* light */
+    font-size: 12px;
+    line-height: 1.2; /* 120% */
+    letter-spacing: var(--ls-wide);
+}
+
+/* tag */
+.text-tag{
+    font-family: var(--font-sans);
+    font-weight: 300; /* light */
+    font-size: 18px;
+    line-height: 1.2; /* 120% */
+    letter-spacing: var(--ls-wide);
+    font-style: italic;
+}
+
+/* small header */
+.text-small-header{
+    font-family: var(--font-sans);
+    font-weight: 700; /* bold */
+    font-size: 18px;
+    line-height: 1.5; /* 150% */
+    letter-spacing: var(--ls-tight);
+    text-transform: capitalize;
+}
+
+/* title */
+.text-title{
+    font-family: var(--font-sans);
+    font-weight: 700; /* bold */
+    font-size: 24px;
+    line-height: 1.2; /* 120% */
+    letter-spacing: var(--ls-tight);
+}
+
+/* header (display) */
+.text-header{
+    font-family: var(--font-serif);
+    font-weight: 400; /* Regular */
+    font-size: clamp(48px, 12vw, 240px);
+    line-height: 1.5; /* 150% */
+    letter-spacing: var(--ls-tight);
+}
+
 /* CENTRED NAV */
 nav ul { list-style: none; padding: 0; margin: 16px 0; display: flex; gap: 24px; justify-content: center; }
 nav a { text-decoration: none; color: #98A1AE; }
@@ -235,8 +309,8 @@ body { margin: 0; font-family: open sauce; }
 .card[data-status="loved"]  { background: var(--blue); }
 
 /* tags / title */
-.card__tags { display: flex; gap: 8px; flex-wrap: wrap; font-size: .85rem; color: #6b7280; }
-.card__title { margin: 6px 0 8px; font-size: 1rem; line-height: 1.2; }
+.card__tags { display: flex; gap: 8px; flex-wrap: wrap; color: #6b7280; }
+.card__title { margin: 6px 0 8px; }
 
 /* media: image fills card width, height hugs content */
 .card__media { margin: 0; }
