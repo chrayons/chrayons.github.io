@@ -320,6 +320,14 @@ body { margin: 0; font-family: open sauce; color: #353131;}
 /* status-based automatic styling (from your data-status) */
 .card[data-status="to-do"] .card__surface { background: var(--grey); }
 .card[data-status="loved"] .card__surface { background: var(--blue); }
+.card[data-status="loved"] .card__media img {
+    filter: grayscale(100%);
+    transition: filter 0.2s ease;
+}
+/* restore color on hover */
+.card[data-status="loved"]:hover .card__media img {
+    filter: grayscale(0%);
+}
 
 /* tags + title */
 .card__tags { display: flex; gap: 8px; flex-wrap: wrap; color: #6b7280; }
