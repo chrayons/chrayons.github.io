@@ -1,3 +1,8 @@
+/* make all pages have a off-white bg */
+html, body {
+    background-color: #FDFDFD;
+}
+
 /* UNIVERSAL FONT STYLES / GUIDES */
 :root{
     --font-sans: "Open Sauce Sans", system-ui, sans-serif;
@@ -74,7 +79,7 @@
 
 a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: underline;
   cursor: pointer;
   transition: opacity .2s ease, text-decoration-color .2s ease;
 }
@@ -82,7 +87,25 @@ a {
 a:hover,
 a:focus-visible {
     text-decoration: underline;
+    color: #4C6663;
 }
+
+
+/* MAKE THE NAV STICKY SO IT STAYS ON SCROLL */
+:root { --nav-height: 20px; }
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #FDFDFD;
+    backdrop-filter: blur(6px);
+    padding-block: 16px;
+}
+
+/* keep hamburger offsets relative to the nav bar */
+header nav { position: relative; min-height: var(--nav-height); }
+
 
 /* NAV COLORS + HOVER + ACTIVE */
 .nav-menu a {
@@ -92,12 +115,12 @@ a:focus-visible {
 
 .nav-menu a:hover,
 .nav-menu a:focus{
-    color: #353131;
+    color: #4C6663;
     font-weight: 700;
 }
 
 .nav-menu a[aria-current="page"] {
-    color: #353131;
+    color: #4C6663;
     font-weight: 700;
     text-decoration: underline;
     text-underline-offset: 4px;
@@ -107,7 +130,7 @@ a:focus-visible {
 .nav-menu {
     list-style: none;
     padding: 0;
-    margin: 16px 0;
+    margin: 0;
     display: flex;
     gap: 24px;
     justify-content:center;
@@ -121,24 +144,28 @@ a:focus-visible {
     font-size: 28px;
     cursor: pointer;
     padding:12px 16px;
-    position: relative;
+    position: absolute;
     z-index: 100;
+    top: 50%;
 }
 
 /* MOBILE NAV */
+
 @media (max-width:900px) {
+    :root { --nav-height: 40px;}
     .hamburger {
         display: block;
         position: absolute;
-        right: 32px;
-        top: 16px;
-        z-index: 100;
+        right: 16px;
+        left: auto;
+        top:50%;
+        transform: translateY(-50%);
     }
 
     .nav-menu {
         display: none;
         position: absolute;
-        top: 56px;
+        top: var(--nav-height);
         right: 16px;
         flex-direction: column;
         gap: 16px;
@@ -369,7 +396,7 @@ footer {
 }
 
 /* page layout */
-main { max-width: 1100px; margin: 0 auto; padding: 0 24px 64px; }
+main { max-width: 1250px; margin: 0 auto; padding: 0 24px 64px; }
 
 /* header bar */
 .work-table{
@@ -377,6 +404,7 @@ main { max-width: 1100px; margin: 0 auto; padding: 0 24px 64px; }
     border-collapse: separate; /* rounded corners + spacing */
     border-spacing: 0 var(--gap); /* space BETWEEN rows (not inside) */
     color: var(--text);
+    position: relative;
 }
 
 .work-table thead th{
@@ -445,8 +473,54 @@ main { max-width: 1100px; margin: 0 auto; padding: 0 24px 64px; }
 
 /* make sure cell backgrounds don’t bleed past corners */
 .work-table tbody tr > * {
-  background-clip: padding-box;
+    background-clip: padding-box;
 }
+
+/* fade non-hovered row */
+.work-table:hover tbody tr:not(:hover) td,
+.work-table:hover tbody tr:not(:hover) th {
+    opacity: .80;
+    transition: opacity .25s ease;
+}
+
+/* match card shadows */
+.work-table tbody tr:hover {
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.08));
+    transition: filter .25s ease, opacity .25s ease;
+}
+
+/* sticky table header */
+.work-table thead th {
+    position: sticky;
+    top: calc(var(--nav-height) + 48px);
+    background: #ffffffee; /* slight transparency with solid white fallback */
+    backdrop-filter: blur(6px);
+    z-index: 3;
+}
+
+/* hide some columns on smaller screens */
+@media (max-width: 900px) {
+    /* hide hours, wifi, type (columns 4, 5, 6) */
+    .work-table th:nth-child(4),
+    .work-table td:nth-child(4),
+    .work-table th:nth-child(5),
+    .work-table td:nth-child(5),
+    .work-table th:nth-child(6),
+    .work-table td:nth-child(6) {
+        display: none;
+    }
+
+    /* adjust row spacing */
+    .work-table thead th:first-child {
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+    }
+    .work-table thead th:last-child {
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+}
+
 
 
 /* ACITIVITES PAGE */
@@ -464,10 +538,10 @@ main { max-width: 1100px; margin: 0 auto; padding: 0 24px 64px; }
 }
 
 @font-face {
-  font-family: 'Bellavoir Delight';
-  src: url('/fonts/BellavoirDelight.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
+    font-family: 'Bellavoir Delight';
+    src: url('/fonts/BellavoirDelight.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
 }
 
 * { box-sizing: border-box; }
@@ -563,7 +637,7 @@ body { margin: 0; font-family: open sauce; color: #353131;}
 
 /* fade others */
 .cards:hover .card:not(:hover) .card__surface{
-    opacity: .40;
+    opacity: .80;
 }
 
 /* responsive behaviour: drop to 2 columns, then 1 */
