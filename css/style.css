@@ -84,11 +84,75 @@ a:focus-visible {
     text-decoration: underline;
 }
 
-/* CENTRED NAV */
-nav ul { list-style: none; padding: 0; margin: 16px 0; display: flex; gap: 24px; justify-content: center; }
-nav a { text-decoration: none; color: #98A1AE; }
-nav a[aria-current="page"]
-    { color: #353131; font-weight: 700; text-decoration: underline; text-underline-offset: 4px;}
+/* NAV COLORS + HOVER + ACTIVE */
+.nav-menu a {
+    color: #98A1AE;
+    text-decoration: none;
+}
+
+.nav-menu a:hover,
+.nav-menu a:focus{
+    color: #353131;
+    font-weight: 700;
+}
+
+.nav-menu a[aria-current="page"] {
+    color: #353131;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* DESKTOP NAV */
+.nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+    display: flex;
+    gap: 24px;
+    justify-content:center;
+}
+
+.nav-toggle{display: none;}
+
+/* hamburger - hide unless mobile */
+.hamburger{
+    display:none;
+    font-size: 28px;
+    cursor: pointer;
+    padding:12px 16px;
+    position: relative;
+    z-index: 100;
+}
+
+/* MOBILE NAV */
+@media (max-width:900px) {
+    .hamburger {
+        display: block;
+        position: absolute;
+        right: 32px;
+        top: 16px;
+        z-index: 100;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 56px;
+        right: 16px;
+        flex-direction: column;
+        gap: 16px;
+        padding: 24px 32px;
+        background-color: #FDFDFD;
+        z-index: 101;
+    }
+
+    /* when menu is open */
+    .nav-toggle:checked + .hamburger + .nav-menu{
+        display: flex;
+    }
+}
+
 
 /* FOOTER */
 footer {
@@ -147,8 +211,11 @@ footer {
 }
 
 /* small-screen */
-@media (max-width: 800px){
+@media (max-width: 900px){
     .hero-title-serif { margin-top: -0.22em; }
+    .hero-container {
+        margin-top: 64px;
+    }
 }
 
 .notes{
@@ -500,10 +567,10 @@ body { margin: 0; font-family: open sauce; color: #353131;}
 }
 
 /* responsive behaviour: drop to 2 columns, then 1 */
-@media (max-width: 768px){
+@media (max-width: 900x){
     .cards{ column-count: 2; }
 }
-@media (max-width: 576px){
+@media (max-width: 600px){
     .cards{ column-count: 1; }
 }
 
