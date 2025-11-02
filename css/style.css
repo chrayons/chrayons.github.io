@@ -16,17 +16,17 @@ html, body {
 .text-body{
     font-family: var(--font-sans);
     font-weight: 300;
-    font-size: 16px;
+    font-size: 12px;
     line-height: 1.5; /* 150% */
-  letter-spacing: var(--ls-wide);
+    letter-spacing: var(--ls-wide);
 }
 
 /* note */
 .text-note{
     font-family: var(--font-sans);
     font-weight: 300; /* light */
-    font-size: 14px;
-    line-height: 1.2; /* 120% */
+    font-size: 12px;
+    line-height: 1.5;
     letter-spacing: var(--ls-wide);
 }
 
@@ -43,8 +43,8 @@ html, body {
 .text-tag{
     font-family: var(--font-sans);
     font-weight: 300; /* light */
-    font-size: 18px;
-    line-height: 1.2; /* 120% */
+    font-size: 12px;
+    line-height: 1.5;
     letter-spacing: var(--ls-wide);
     font-style: italic;
 }
@@ -52,8 +52,8 @@ html, body {
 /* small header */
 .text-small-header{
     font-family: var(--font-sans);
-    font-weight: 700; /* bold */
-    font-size: 18px;
+    font-weight: 500; /* bold */
+    font-size: 16px;
     line-height: 1.5; /* 150% */
     letter-spacing: var(--ls-tight);
     text-transform: capitalize;
@@ -188,19 +188,19 @@ footer {
   text-align: center;
   padding: 16px 0;
   font-size: 14px;
-  color: #535B5D;
+  color: #98A1AE;
 }
 
 /* INDEX PAGE */
 :root{
-    --page-max: clamp(800px, 86vw, 1600px);
+    --page-max: clamp(320px, 92vw, 1000px);
     --page-pad: clamp(16px, 3vw, 32px);
 }
 
 .hero-container{
-    width: min(100%, var(--page-max));
-    margin-inline: auto;
-    padding-inline: var(--page-pad);
+    width: 100%;
+    margin-inline: 0;
+    padding-inline: 0;
     padding-top: clamp(56px,8vw,140px);
 }
 
@@ -244,20 +244,22 @@ footer {
 }
 
 .notes{
-    width: min(100%, var(--page-max));
-    margin-inline: auto;
-    padding-inline: var(--page-pad);
+    width: 100%;
+    margin-inline: 0;
+    padding-inline: 0;
     display: flex;
     gap: 0;
     justify-content: center;
     align-items: flex-start; /* don't force equal heights */
     margin-top: clamp(32px, 5vw, 120px);
-    overflow: visible;
+    overflow-x: visible;
+    overflow-y: visible;
     margin-bottom: clamp(56px,8vw,140px);
 }
 
 .notes > article {
-    flex: 1 1 0; /*i want equal width columns */
+    flex: 1 1 clamp(280px, 45%, 520px);
+    max-width: 520px;
     min-width: 0;
     display: flex;
     position: relative;
@@ -285,15 +287,24 @@ footer {
     /* keep width responsive */
     width: 100%;
     max-width: 600px; /* hug tight, but don’t stretch too wide */
-    min-width: 300px;
+    min-width: 0;
     margin: 0 auto;
     box-sizing: border-box;
+}
+
+@media(max-width: 900px){
+    .note-inner{
+        max-width: none;
+        min-width: 0;
+        font-size: clamp(10px, 3vw, 12px);
+        padding: clamp(20px, 4vw, 32px);
+    }
 }
 
 /* remove browser default extra margins that add phantom space */
 .note-inner h2 {
     margin: 0 0 12px;
-    line-height: 1.2;
+    line-height: 1.5;
 }
 .note-inner ul,
 .note-inner ol {
@@ -309,7 +320,7 @@ footer {
     .notes {
         flex-direction: column;
         align-items: center; /* center the cards */
-        width: min(100%, var(--page-max));
+        width: 100%;
     }
 }
 
@@ -331,7 +342,7 @@ footer {
 
 /* right/blue: tilt clockwise, nudge left so it overlaps the grey */
 .note-blue{
-    transform: rotate(7deg) translate(-32px, -8px);
+    transform: rotate(7deg) translate(clamp(-16px, -3vw, -32px), -8px);
     z-index: 2; /* sit on top */
 }
 
@@ -340,14 +351,16 @@ footer {
   .notes{
       flex-direction: column;
       gap: 40px;
-      align-items: stretch;
+      align-items: center;
       padding-inline: 16px;
+      width:100%;
       overflow-x: clip; /* get rid of horizontal scroll when elements are too long*/
     }
 
     /* give each card a fluid width; cap this so they don’t feel huge */
     .notes > article{
-        width: min(500px, 80vw);
+        width: 100%;
+        max-width: 560px;
         transform-origin: center;
     }
 
@@ -394,7 +407,11 @@ footer {
 }
 
 /* page layout */
-main { max-width: 1250px; margin: 0 auto; padding: 0 24px 64px; }
+main{max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px 64px;
+    box-sizing: border-box; /* keeps padding inside the 1000px cap */}
 
 /* header bar */
 .work-table{
@@ -451,6 +468,7 @@ main { max-width: 1250px; margin: 0 auto; padding: 0 24px 64px; }
     color: var(--text);
     border-radius: 8px;
     white-space: nowrap;
+    text-transform: lowercase;
 }
 
 /* column sizing */
@@ -541,9 +559,6 @@ main { max-width: 1250px; margin: 0 auto; padding: 0 24px 64px; }
     font-weight: 400;
     font-style: normal;
 }
-
-* { box-sizing: border-box; }
-body { margin: 0; font-family: open sauce; color: #353131;}
 
 .page-title {
     text-align: center;
