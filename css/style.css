@@ -69,10 +69,11 @@ html, body {
 
     /* update these universal colours for other pages*/
     --blue:#BAE4F8;
+    --lightblue: #D6F2FF;
     --black:#353131;
     --white: #FDFDFD;
     --darkgrey: #98A1AE;
-    --green: #4C6663;
+    --green: #0F8866;
     --lightgrey: #EDEFF1;
 
     /*header nav*/
@@ -338,7 +339,7 @@ footer {
 }
 
 .note-blue {
-    background: var(--blue);
+    background: var(--lightblue);
     padding: 32px;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -460,7 +461,7 @@ main{max-width: 1000px;
 .work-table tbody tr > *:last-child { border-top-right-radius: 16px; border-bottom-right-radius: 16px; }
 
 /* automatic row colors based on your data attribute */
-.work-table tbody tr[data-status="loved"]  > *{ background: var(--blue); }
+.work-table tbody tr[data-status="loved"]  > *{ background: var(--lightblue); }
 .work-table tbody tr[data-status="to-try"] > *{ background: var(--lightgrey); }
 
 /* name column = row header link */
@@ -612,7 +613,7 @@ main{max-width: 1000px;
 
 /* status-based automatic styling (from your data-status) */
 .card[data-status="to-do"] .card__surface { background: var(--lightgrey); }
-.card[data-status="loved"] .card__surface { background: var(--blue); }
+.card[data-status="loved"] .card__surface { background: var(--lightblue); }
 .card[data-status="loved"] .card__media img {
     filter: grayscale(100%);
     transition: filter 0.2s ease;
