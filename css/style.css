@@ -9,8 +9,8 @@ html, body {
     --font-serif: "Bellavoir Delight", serif;
 
     /* helpful letter-spacing tokens */
-    --ls-wide: 0.01em;     /* +1%  */
-    --ls-tight: -0.011em;  /* -1.1% */
+    --ls-wide: 0.01em; /* +1%  */
+    --ls-tight: -0.011em; /* -1.1% */
 }
 /* body text */
 .text-body{
@@ -35,7 +35,7 @@ html, body {
     font-family: var(--font-sans);
     font-weight: 300; /* light */
     font-size: 12px;
-    line-height: 1.2; /* 120% */
+    line-height: 1.5;
     letter-spacing: var(--ls-wide);
 }
 
@@ -78,10 +78,11 @@ html, body {
 }
 
 a {
-  color: inherit;
-  text-decoration: underline;
-  cursor: pointer;
-  transition: opacity .2s ease, text-decoration-color .2s ease;
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+    text-underline-offset: 4px;
+    transition: opacity .2s ease, text-decoration-color .2s ease;
 }
 
 a:hover,
@@ -240,9 +241,6 @@ footer {
 /* small-screen */
 @media (max-width: 900px){
     .hero-title-serif { margin-top: -0.22em; }
-    .hero-container {
-        margin-top: 64px;
-    }
 }
 
 .notes{
@@ -270,20 +268,20 @@ footer {
 .note-blue {
     background: #BAE4F8;
     padding: 32px;
-    border-radius: 32px;
+    border-radius: 16px;
     box-shadow: 0 4.3px 12.89px rgba(0, 0, 0, 0.05);
 }
 .note-grey {
     background: #EDEFF1;
     padding: 32px;
-    border-radius: 32px;
+    border-radius: 16px;
     box-shadow: 0 4.3px 12.89px rgba(0, 0, 0, 0.05);
 }
 
 .note-inner{
     background: #FDFDFD; /* white */
     padding: 24px 32px;
-    border-radius: 16px;
+    border-radius: 8px;
     /* keep width responsive */
     width: 100%;
     max-width: 600px; /* hug tight, but don’t stretch too wide */
@@ -388,7 +386,7 @@ footer {
 /* WORK SPOTS PAGE */
 :root{
     --gap: 18px; /* vertical space between rows */
-    --radius: 22px; /* row corners */
+    --radius: 16px; /* row corners */
     --row-blue: #D6F2FF; /* loved bg */
     --row-grey: #F3F5F6; /* to-try bg */
     --header: #FAFBFC; /* header bar */
@@ -451,7 +449,7 @@ main { max-width: 1250px; margin: 0 auto; padding: 0 24px 64px; }
     padding: 10px 16px;
     background: #FDFDFD;
     color: var(--text);
-    border-radius: 16px;
+    border-radius: 8px;
     white-space: nowrap;
 }
 
@@ -512,12 +510,12 @@ main { max-width: 1250px; margin: 0 auto; padding: 0 24px 64px; }
 
     /* adjust row spacing */
     .work-table thead th:first-child {
-        border-top-left-radius: 12px;
-        border-bottom-left-radius: 12px;
+        border-top-left-radius: 16px;
+        border-bottom-left-radius: 16px;
     }
     .work-table thead th:last-child {
-        border-top-right-radius: 12px;
-        border-bottom-right-radius: 12px;
+        border-top-right-radius: 16px;
+        border-bottom-right-radius: 16px;
     }
 }
 
@@ -578,7 +576,7 @@ body { margin: 0; font-family: open sauce; color: #353131;}
 /* the visual box */
 .card__surface{
     background: var(--grey);
-    border-radius: 32px;
+    border-radius: 16px;
     padding: 40px;
     box-shadow: 0 4.3px 12.89px rgba(0,0,0,.05);
 }
@@ -605,7 +603,7 @@ body { margin: 0; font-family: open sauce; color: #353131;}
     display: block;
     width: 100%; /* fill width */
     height: auto; /* hug height */
-    border-radius: 16px;
+    border-radius: 8px;
 }
 .card__credit { font-size: .75rem; color: #6b7280; margin-top: 6px; word-break: break-word; }
 .card__body { line-height: 1.5; }
@@ -620,7 +618,7 @@ body { margin: 0; font-family: open sauce; color: #353131;}
     position: absolute;
     inset: 0; /* fill entire card area */
     z-index: 1;
-    border-radius: 32px; /* match card corner */
+    border-radius: 16px; /* match card corner */
     cursor: pointer;
 }
 
@@ -640,12 +638,20 @@ body { margin: 0; font-family: open sauce; color: #353131;}
     opacity: .80;
 }
 
-/* responsive behaviour: drop to 2 columns, then 1 */
-@media (max-width: 900x){
+/* responsive behaviour: drop to 2 columns, then 1
+ * also want the padding to be a little thinner on the cards
+ * so the text and images can take up more space */
+@media (max-width: 1000px){
     .cards{ column-count: 2; }
+    .card__surface{
+        padding: 24px;
+    }
 }
 @media (max-width: 600px){
     .cards{ column-count: 1; }
+    .card__surface{
+        padding: 24px;
+    }
 }
 
 
