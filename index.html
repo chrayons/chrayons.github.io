@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>christina’s nyc bucket list — About</title>
+    <title>About Christina’s NYC Bucket List</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -10,7 +10,12 @@
     <header>
         <nav aria-label="Primary">
             <!-- hamburger button for mobile -->
-            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+            <!-- this means it's hidden with css and then becomes
+            the menu open and close state. ie if the nav-toggle is checked, then
+            we can have something appear or an action be done or something-->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <!-- this is a label acting as the button. <label for="nav-toggle"> binds
+            the label onto the checkbox. the label is the little ☰ (hamburger) -->
             <label for="nav-toggle" class="hamburger" aria-label="Toggle navigation">☰</label>
 
             <!-- this is an unordered list (requirement), but will also become our sticky navbar -->
@@ -47,9 +52,9 @@
                 <div class = "note-inner text-body">
                 <h2 id="read-cards-title" class="text-small-header">HOW TO READ THE CARDS:</h2>
                 <ul>
-                    <li><strong>Grey items</strong> = on my to-try list.</li>
+                    <li><u>Grey items</u> = on my to-try list.</li>
                     <li>
-                        <strong>Blue items</strong> = been there, loved that.
+                        <u>Blue items</u> = been there, loved that.
                         <!-- nested list (requirement) -->
                         <ul>
                             <li>If a blue card stays up, it’s a must-try!</li>
@@ -66,7 +71,7 @@
                 <ol>
                     <li>Go to the page you’re interested in.</li>
                     <li>Read the cards to help you choose where to go.</li>
-                    <li>Click on a card for more information.</li>
+                    <li>Click on the links inside the card for more info.</li>
                 </ol>
                 </div>
             </article>
@@ -74,7 +79,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Christina Lu. All rights reserved.</p>
+        <p class="text-note-sm">&copy; 2025 Christina Lu. All rights reserved.</p>
     </footer>
 
 </body>

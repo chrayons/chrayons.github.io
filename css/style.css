@@ -1,17 +1,89 @@
 /* make all pages have a off-white bg */
 html, body {
-    background-color: #FDFDFD;
+    background-color: var(--white);
 }
+
+/* ADDING THE UNIVERSAL FONTS AT THE TOP FOR EASY REFERENCE*/
+    @font-face {
+        font-family: 'Open Sauce One';
+        src: url('/fonts/OpenSauceOne-Light.ttf') format('truetype');
+        font-weight: 300; /* Light */
+        font-style: normal;
+        font-display: swap; /* this means if the font is taking too long to load,
+                             * a backup will show up */
+    }
+
+    @font-face {
+        font-family: "Open Sauce One";
+        src: url("/fonts/OpenSauceOne-Regular.ttf") format("truetype");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap; /* this means if the font is taking too long to load,
+                             * a backup will show up */
+    }
+
+    @font-face {
+        font-family: 'Open Sauce One';
+        src: url('/fonts/OpenSauceOne-Medium.ttf') format('truetype');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap; /* this means if the font is taking too long to load,
+                             * a backup will show up */
+    }
+
+    @font-face {
+        font-family: 'Open Sauce One';
+        src: url('/fonts/OpenSauceOne-SemiBold.ttf') format('truetype');
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap; /* this means if the font is taking too long to load,
+                             * a backup will show up */
+    }
+
+    @font-face {
+        font-family: 'Open Sauce One';
+        src: url('/fonts/OpenSauceOne-Bold.ttf') format('truetype');
+        font-weight: 800;
+        font-style: normal;
+        font-display: swap; /* this means if the font is taking too long to load,
+                             * a backup will show up */
+    }
+
+    @font-face {
+        font-family: 'Bellavoir Delight';
+        src: url('/fonts/BellavoirDelight.otf') format('opentype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap; /* this means if the font is taking too long to load,
+                             * a backup will show up */
+    }
 
 /* UNIVERSAL FONT STYLES / GUIDES */
 :root{
-    --font-sans: "Open Sauce Sans", system-ui, sans-serif;
+    --font-sans: "Open Sauce One", system-ui, sans-serif;
     --font-serif: "Bellavoir Delight", serif;
 
     /* helpful letter-spacing tokens */
     --ls-wide: 0.01em; /* +1%  */
     --ls-tight: -0.011em; /* -1.1% */
+
+    /* update these universal colours for other pages*/
+    --blue:#BAE4F8;
+    --black:#353131;
+    --white: #FDFDFD;
+    --darkgrey: #98A1AE;
+    --green: #4C6663;
+    --lightgrey: #EDEFF1;
+
+    /*header nav*/
+    --nav-height: 20px;
+    --mobile-nav-height: 40px;
+
+    /* gaps for pages with cards or rows*/
+    --card-gap: 32px; /* gap between different cards on activities, museum, sightseeing */
+    --row-gap: 18px; /* vertical space between rows in the work spots table */
 }
+
 /* body text */
 .text-body{
     font-family: var(--font-sans);
@@ -19,6 +91,7 @@ html, body {
     font-size: 12px;
     line-height: 1.5; /* 150% */
     letter-spacing: var(--ls-wide);
+    text-transform: none;
 }
 
 /* note */
@@ -72,6 +145,9 @@ html, body {
 .text-header{
     font-family: var(--font-serif);
     font-weight: 400; /* Regular */
+    /* NOTE TO SELF still not entirely sure how clamp works but i want the text
+     * to fill the space properly and not be too big as you're decreasing the
+     * width of the screen */
     font-size: clamp(48px, 12vw, 240px);
     line-height: 1.5; /* 150% */
     letter-spacing: var(--ls-tight);
@@ -88,18 +164,17 @@ a {
 a:hover,
 a:focus-visible {
     text-decoration: underline;
-    color: #4C6663;
+    color: var(--green);
 }
 
 
 /* MAKE THE NAV STICKY SO IT STAYS ON SCROLL */
-:root { --nav-height: 20px; }
 
 header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: #FDFDFD;
+    background: var(--white);
     backdrop-filter: blur(6px);
     padding-block: 16px;
 }
@@ -110,18 +185,18 @@ header nav { position: relative; min-height: var(--nav-height); }
 
 /* NAV COLORS + HOVER + ACTIVE */
 .nav-menu a {
-    color: #98A1AE;
+    color: var(--darkgrey);
     text-decoration: none;
 }
 
 .nav-menu a:hover,
 .nav-menu a:focus{
-    color: #4C6663;
+    color: var(--green);
     font-weight: 700;
 }
 
 .nav-menu a[aria-current="page"] {
-    color: #4C6663;
+    color: var(--green);
     font-weight: 700;
     text-decoration: underline;
     text-underline-offset: 4px;
@@ -153,7 +228,6 @@ header nav { position: relative; min-height: var(--nav-height); }
 /* MOBILE NAV */
 
 @media (max-width:900px) {
-    :root { --nav-height: 40px;}
     .hamburger {
         display: block;
         position: absolute;
@@ -166,12 +240,12 @@ header nav { position: relative; min-height: var(--nav-height); }
     .nav-menu {
         display: none;
         position: absolute;
-        top: var(--nav-height);
+        top: var(--mobile-nav-height);
         right: 16px;
         flex-direction: column;
         gap: 16px;
         padding: 24px 32px;
-        background-color: #FDFDFD;
+        background-color: var(--white);
         z-index: 101;
     }
 
@@ -188,20 +262,14 @@ footer {
   text-align: center;
   padding: 16px 0;
   font-size: 14px;
-  color: #98A1AE;
-}
-
-/* INDEX PAGE */
-:root{
-    --page-max: clamp(320px, 92vw, 1000px);
-    --page-pad: clamp(16px, 3vw, 32px);
+  color: var(--darkgrey);
 }
 
 .hero-container{
     width: 100%;
     margin-inline: 0;
     padding-inline: 0;
-    padding-top: clamp(56px,8vw,140px);
+    padding-top: 80px;
 }
 
 .hero-title span{
@@ -220,7 +288,7 @@ footer {
     font-style: normal;
     font-size: clamp(32px, 6vw, 180px);
     letter-spacing: -0.011em;
-    color: #BAE4F8;
+    color: var(--blue);
 }
 
 /* second line */
@@ -235,7 +303,7 @@ footer {
     flex-flow: nowrap;
     font-size: clamp(48px, 12vw, 240px);
     letter-spacing: -0.011em;
-    color: #353131;
+    color: var(--black);
 }
 
 /* small-screen */
@@ -251,15 +319,17 @@ footer {
     gap: 0;
     justify-content: center;
     align-items: flex-start; /* don't force equal heights */
-    margin-top: clamp(32px, 5vw, 120px);
-    overflow-x: visible;
+    margin-top: 40px;
+    overflow-x: clip;
     overflow-y: visible;
-    margin-bottom: clamp(56px,8vw,140px);
+    margin-bottom: 80px;
+    position: relative; /* enables z-index on children */
 }
 
+/* the notes are the first child of the article we wrote in html, so it
+ * only affects that*/
 .notes > article {
-    flex: 1 1 clamp(280px, 45%, 520px);
-    max-width: 520px;
+    max-width: 420px;
     min-width: 0;
     display: flex;
     position: relative;
@@ -268,20 +338,24 @@ footer {
 }
 
 .note-blue {
-    background: #BAE4F8;
+    background: var(--blue);
     padding: 32px;
     border-radius: 16px;
-    box-shadow: 0 4.3px 12.89px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transform: rotate(7deg) translatex(-12px);
+    z-index: 2; /* sit on top */
 }
 .note-grey {
-    background: #EDEFF1;
+    background: var(--lightgrey);
     padding: 32px;
     border-radius: 16px;
-    box-shadow: 0 4.3px 12.89px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transform: rotate(-6deg) translateY(12px);
+    z-index: 1;
 }
 
 .note-inner{
-    background: #FDFDFD; /* white */
+    background: var(--white);
     padding: 24px 32px;
     border-radius: 8px;
     /* keep width responsive */
@@ -290,15 +364,6 @@ footer {
     min-width: 0;
     margin: 0 auto;
     box-sizing: border-box;
-}
-
-@media(max-width: 900px){
-    .note-inner{
-        max-width: none;
-        min-width: 0;
-        font-size: clamp(10px, 3vw, 12px);
-        padding: clamp(20px, 4vw, 32px);
-    }
 }
 
 /* remove browser default extra margins that add phantom space */
@@ -312,38 +377,7 @@ footer {
     padding-left: 1.25rem; /* keep bullets indented without big margins */
 }
 .note-inner li {
-  margin: 8px 0;
-}
-
-/* stack the cards on small screens */
-@media (max-width: 900px){
-    .notes {
-        flex-direction: column;
-        align-items: center; /* center the cards */
-        width: 100%;
-    }
-}
-
-/* tilting the cards */
-/* let the articles overlap */
-.notes{
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 0; /* no gap so overlap looks natural */
-    position: relative; /* enables z-index on children */
-}
-
-/* grey card: tilt counter-clockwise and drop slightly */
-.note-grey{
-    transform: rotate(-6deg) translateY(12px);
-    z-index: 1;
-}
-
-/* right/blue: tilt clockwise, nudge left so it overlaps the grey */
-.note-blue{
-    transform: rotate(7deg) translate(clamp(-16px, -3vw, -32px), -8px);
-    z-index: 2; /* sit on top */
+    margin: 8px 0;
 }
 
 /* mobile: undo the effect so they can be stacked - should look at other mobile breakpoints for consistency */
@@ -354,14 +388,7 @@ footer {
       align-items: center;
       padding-inline: 16px;
       width:100%;
-      overflow-x: clip; /* get rid of horizontal scroll when elements are too long*/
-    }
-
-    /* give each card a fluid width; cap this so they don’t feel huge */
-    .notes > article{
-        width: 100%;
-        max-width: 560px;
-        transform-origin: center;
+      overflow-x: clip;
     }
 
     /* left card: pin to left edge, keep tilt (no overlap translate) */
@@ -373,7 +400,8 @@ footer {
 
     /* right card: pin to right edge, keep tilt (no overlap translate) */
     .note-blue{
-        margin-right: 0;
+        /* add a margin so that it's not sooo right aligned*/
+        margin-right: 32px;
         margin-left: auto; /* right aligned */
         transform: rotate(7deg);
     }
@@ -381,12 +409,6 @@ footer {
     /* let the inner fill the card; remove desktop cap */
     .note-inner{
         max-width: none;
-        font-size: clamp(10px, 3vw, 12px);
-        padding: clamp(20px, 4vw, 32px);
-    }
-
-    .note-inner h2 {
-        font-size: clamp(14px, 5vw, 18px);
     }
 }
 
@@ -397,15 +419,6 @@ footer {
 
 
 /* WORK SPOTS PAGE */
-:root{
-    --gap: 18px; /* vertical space between rows */
-    --radius: 16px; /* row corners */
-    --row-blue: #D6F2FF; /* loved bg */
-    --row-grey: #F3F5F6; /* to-try bg */
-    --header: #FAFBFC; /* header bar */
-    --text: #353131;
-}
-
 /* page layout */
 main{max-width: 1000px;
     width: 100%;
@@ -417,14 +430,14 @@ main{max-width: 1000px;
 .work-table{
     width: 100%;
     border-collapse: separate; /* rounded corners + spacing */
-    border-spacing: 0 var(--gap); /* space BETWEEN rows (not inside) */
-    color: var(--text);
+    border-spacing: 0 var(--row-gap); /* space BETWEEN rows (not inside) */
+    color: var(--black);
     position: relative;
 }
 
 .work-table thead th{
-    background: var(--header);
-    color: var(--text);
+    background: var(--white);
+    color: var(--black);
     text-transform: uppercase;
     text-align: left;
     padding: 12px 16px;
@@ -443,12 +456,12 @@ main{max-width: 1000px;
 }
 
 /* round the left/right ends of each row */
-.work-table tbody tr > *:first-child{ border-top-left-radius: var(--radius); border-bottom-left-radius: var(--radius); }
-.work-table tbody tr > *:last-child { border-top-right-radius: var(--radius); border-bottom-right-radius: var(--radius); }
+.work-table tbody tr > *:first-child{ border-top-left-radius: 16px; border-bottom-left-radius: 16px; }
+.work-table tbody tr > *:last-child { border-top-right-radius: 16px; border-bottom-right-radius: 16px; }
 
 /* automatic row colors based on your data attribute */
-.work-table tbody tr[data-status="loved"]  > *{ background: var(--row-blue); }
-.work-table tbody tr[data-status="to-try"] > *{ background: var(--row-grey); }
+.work-table tbody tr[data-status="loved"]  > *{ background: var(--blue); }
+.work-table tbody tr[data-status="to-try"] > *{ background: var(--lightgrey); }
 
 /* name column = row header link */
 .work-table tbody th[scope="row"] a{
@@ -464,8 +477,8 @@ main{max-width: 1000px;
 .work-table .status{
     display: inline-block;
     padding: 10px 16px;
-    background: #FDFDFD;
-    color: var(--text);
+    background: var(--white);
+    color: var(--black);
     border-radius: 8px;
     white-space: nowrap;
     text-transform: lowercase;
@@ -483,8 +496,7 @@ main{max-width: 1000px;
 /* one outer shadow per row */
 .work-table tbody tr {
     /* the row is a “layer”, then we cast a shadow from it */
-    filter: drop-shadow(0 4px 13px rgba(0,0,0,0.05));
-    -webkit-filter: drop-shadow(0 4px 13px rgba(0,0,0,0.05));
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.05));
 }
 
 /* make sure cell backgrounds don’t bleed past corners */
@@ -537,67 +549,69 @@ main{max-width: 1000px;
     }
 }
 
+/* on iphone, hide borough, since this was causing horizontal scroll */
+@media (max-width: 500px) {
+    /* hide borough, hours, wifi, type (columns 1, 4, 5, 6) */
+    .work-table th:nth-child(1),
+    .work-table td:nth-child(1),
+    .work-table th:nth-child(4),
+    .work-table td:nth-child(4),
+    .work-table th:nth-child(5),
+    .work-table td:nth-child(5),
+    .work-table th:nth-child(6),
+    .work-table td:nth-child(6) {
+        display: none;
+    }
+
+    /* adjust row spacing */
+    .work-table thead th:first-child {
+        border-top-left-radius: 16px;
+        border-bottom-left-radius: 16px;
+    }
+    .work-table thead th:last-child {
+        border-top-right-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+
+    /* round the left/right ends of the second row column now*/
+    /* this first one is the title, and the second line is all the actual rows of the table */
+    .work-table thead tr > *:nth-child(2){ border-top-left-radius: 16px; border-bottom-left-radius: 16px; }
+    .work-table tbody tr > *:nth-child(2){ border-top-left-radius: 16px; border-bottom-left-radius: 16px; }
+}
+
 
 
 /* ACITIVITES PAGE */
-:root{
-    --gap: 32px; /* gap between different cards */
-    --blue: #D6F2FF;   /* loved bg */
-    --grey: #F3F5F6;   /* to-do bg */
-}
-
-@font-face {
-    font-family: 'Open Sauce';
-    src: url('/fonts/OpenSauceOne-Light.ttf') format('truetype');
-    font-weight: 300; /* Light */
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Bellavoir Delight';
-    src: url('/fonts/BellavoirDelight.otf') format('opentype');
-    font-weight: 400;
-    font-style: normal;
-}
 
 .page-title {
     text-align: center;
-    margin: 24px 0 32px;
-    padding-top: clamp(56px,8vw,140px);
-    font-family: 'Bellavoir Delight', serif;  /* regular + fallback */
-    font-weight: 400;
-    font-style: normal;
-    font-size: clamp(48px, 12vw, 240px);
-    letter-spacing: -0.011em;
-    line-height: 1.2;
-    color: #353131
+    margin: 24px 0 32px; padding-top: 80px;
 }
 
 /* masonry-style 3 columns */
 .cards{
     column-count: 3;
-    column-gap: var(--gap);
-    padding: 0 var(--gap);
+    column-gap: var(--card-gap);
+    padding: 0 var(--card-gap);
 }
 
 /* the item that flows in columns (no shadow here) */
 .card{
     display: block;
     break-inside: avoid;
-    -webkit-column-break-inside: avoid;
-    margin: 0 0 var(--gap);
+    margin: 0 0 var(--card-gap);
 }
 
 /* the visual box */
 .card__surface{
-    background: var(--grey);
+    background: var(--lightgrey);
     border-radius: 16px;
     padding: 40px;
-    box-shadow: 0 4.3px 12.89px rgba(0,0,0,.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,.05);
 }
 
 /* status-based automatic styling (from your data-status) */
-.card[data-status="to-do"] .card__surface { background: var(--grey); }
+.card[data-status="to-do"] .card__surface { background: var(--lightgrey); }
 .card[data-status="loved"] .card__surface { background: var(--blue); }
 .card[data-status="loved"] .card__media img {
     filter: grayscale(100%);
@@ -609,7 +623,7 @@ main{max-width: 1000px;
 }
 
 /* tags + title */
-.card__tags { display: flex; gap: 8px; flex-wrap: wrap; color: #6b7280; }
+.card__tags { display: flex; gap: 8px; flex-wrap: wrap; color: var(--darkgrey); }
 .card__title { margin: 32px 0 16px; }
 
 /* media: image fills card width, height hugs content */
@@ -620,7 +634,7 @@ main{max-width: 1000px;
     height: auto; /* hug height */
     border-radius: 8px;
 }
-.card__credit { font-size: .75rem; color: #6b7280; margin-top: 6px; word-break: break-word; }
+.card__credit { font-size: .75rem; color: var(--darkgrey); margin-top: 6px;}
 .card__body { line-height: 1.5; }
 
 /* make whole card clickable */
