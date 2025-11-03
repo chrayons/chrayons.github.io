@@ -10,15 +10,17 @@
     <header>
         <nav aria-label="Primary">
             <!-- hamburger button for mobile -->
-            <!-- this means it's hidden with css and then becomes
-            the menu open and close state. ie if the nav-toggle is checked, then
-            we can have something appear or an action be done or something-->
-            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+
             <!-- this is a label acting as the button. <label for="nav-toggle"> binds
             the label onto the checkbox. the label is the little ☰ (hamburger) -->
             <label for="nav-toggle" class="hamburger" aria-label="Toggle navigation">☰</label>
 
-            <!-- this is an unordered list (requirement), but will also become our sticky navbar -->
+            <!-- this means it's hidden with css and then becomes
+            the menu open and close state. ie if the nav-toggle is checked, then
+            we can have something appear or an action be done or something-->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+
+            <!-- this is an unordered list (requirement), but will also become our fixed navbar -->
             <ul class="nav-menu text-small-header" id="nav-menu">
                 <li><a href="index.html" aria-current="page">ABOUT</a></li>
                 <li><a href="activities.html">ACTIVITIES</a></li>
@@ -79,7 +81,7 @@
     </main>
 
     <footer>
-        <p class="text-note-sm">&copy; 2025 Christina Lu. All rights reserved.</p>
+        <p class="text-note">&copy; 2025 Christina Lu. All rights reserved.</p>
     </footer>
 
 </body>

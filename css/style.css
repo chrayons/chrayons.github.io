@@ -35,7 +35,7 @@ html, body {
     @font-face {
         font-family: 'Open Sauce One';
         src: url('/fonts/OpenSauceOne-Bold.ttf') format('truetype');
-        font-weight: 800;
+        font-weight: 700;
         font-style: normal;
     }
 
@@ -64,10 +64,6 @@ html, body {
     --green: #0F8866;
     --lightgrey: #EDEFF1;
 
-    /*header nav*/
-    --nav-height: 20px;
-    --mobile-nav-height: 30px;
-
     /* gaps for pages with cards or rows*/
     --card-gap: 32px; /* gap between different cards on activities, museum, sightseeing */
     --row-gap: 18px; /* vertical space between rows in the work spots table */
@@ -92,15 +88,6 @@ html, body {
     letter-spacing: var(--ls-wide);
 }
 
-/* small note */
-.text-note-sm{
-    font-family: var(--font-sans);
-    font-weight: 300; /* light */
-    font-size: 12px;
-    line-height: 1.5;
-    letter-spacing: var(--ls-wide);
-}
-
 /* tag */
 .text-tag{
     font-family: var(--font-sans);
@@ -114,7 +101,7 @@ html, body {
 /* small header */
 .text-small-header{
     font-family: var(--font-sans);
-    font-weight: 500; /* bold */
+    font-weight: 500; /* Medium */
     font-size: 16px;
     line-height: 1.5; /* 150% */
     letter-spacing: var(--ls-tight);
@@ -137,7 +124,7 @@ html, body {
     /* NOTE TO SELF still not entirely sure how clamp works but i want the text
      * to fill the space properly and not be too big as you're decreasing the
      * width of the screen */
-    font-size: clamp(48px, 12vw, 240px);
+    font-size: clamp(48px, 12vw, 160px);
     line-height: 1.5; /* 150% */
     letter-spacing: var(--ls-tight);
 }
@@ -157,24 +144,30 @@ a:focus-visible {
 }
 
 
-/* MAKE THE NAV STICKY SO IT STAYS ON SCROLL */
+/* MAKE THE NAV FIXED SO IT STAYS ON SCROLL
+ * I initially used sticky, but since it didn’t need to be constrained to the container,
+ * fixed is a simpler solution */
 
 header {
-    position: sticky;
+    position: fixed;
     top: 0;
+    right:0;
+    left: 0;
     z-index: 1000;
     background: var(--white);
-    backdrop-filter: blur(6px);
-    padding-block: 16px;
+    padding: 16px;
+    opacity: 0.95;
 }
 
-/* keep hamburger offsets relative to the nav bar */
-header nav { position: relative; min-height: var(--nav-height); }
+/* keep hamburger position relative to the nav bar */
+header nav {
+    position: relative;
+}
 
 
 /* NAV COLORS + HOVER + ACTIVE */
 .nav-menu a {
-    color: var(--darkgrey);
+    color: var(--black);
     text-decoration: none;
 }
 
@@ -199,66 +192,81 @@ header nav { position: relative; min-height: var(--nav-height); }
     display: flex;
     gap: 24px;
     justify-content:center;
+    align-items: center;
 }
 
-.nav-toggle{display: none;}
+/* this hides UI on desktop */
+nav input[type="checkbox"],
+nav label { display: none;}
 
 /* hamburger - hide unless mobile */
 .hamburger{
-    display:none;
     font-size: 28px;
     cursor: pointer;
-    padding:12px 16px;
+    padding: 0 32px;
     position: absolute;
     z-index: 100;
     top: 50%;
+    transform: translateY(-50%);
 }
 
 /* MOBILE NAV */
 
 @media (max-width:900px) {
-    .hamburger {
+    header{
+        padding-top:32px;
+        padding-bottom: 8px;
+        opacity: .95;
+    }
+    nav label.hamburger {
         display: block;
-        position: absolute;
-        right: 16px;
-        left: auto;
-        top:50%;
-        transform: translateY(-50%);
+        position: static;
+        right: auto;
+        top: auto;
+        transform: none;
+        text-align: right;
     }
 
-    .nav-menu {
-        display: none;
-        position: absolute;
-        top: var(--mobile-nav-height);
-        right: 16px;
-        flex-direction: column;
-        gap: 16px;
-        padding: 24px 32px;
-        background-color: var(--white);
-        z-index: 101;
+    nav .nav-menu{
+        display: block;
+        padding: 0;
+        margin: 0;
     }
 
-    /* when menu is open */
-    .nav-toggle:checked + .hamburger + .nav-menu{
-        display: flex;
+    nav .nav-menu li {
+        width: 100%;
+        text-align: center;
+        padding: .5em;
     }
+
+    nav input[type="checkbox"]:not(:checked) + .nav-menu { display: none;}
 }
 
 
 /* FOOTER */
 footer {
-  margin-top: auto;
-  text-align: center;
-  padding: 16px 0;
-  font-size: 14px;
-  color: var(--darkgrey);
+    margin-top: auto;
+    text-align: center;
+    padding: 16px 0;
+    font-size: 14px;
+    color: var(--darkgrey);
 }
+
+
+/* INDEX PAGE */
+/* page layout */
+main{
+    max-width: 850px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px 24px;
+    box-sizing: border-box; /* keeps padding inside the 1000px cap */}
 
 .hero-container{
     width: 100%;
     margin-inline: 0;
     padding-inline: 0;
-    padding-top: 80px;
+    padding-top: 112px;
 }
 
 .hero-title span{
@@ -275,8 +283,8 @@ footer {
     font-family: 'Open Sauce One', sans-serif;
     font-weight: 700;
     font-style: normal;
-    font-size: clamp(32px, 6vw, 180px);
-    letter-spacing: -0.011em;
+    font-size: clamp(32px, 6vw, 120px);
+    letter-spacing: var(--ls-tight);
     color: var(--blue);
 }
 
@@ -289,9 +297,8 @@ footer {
     font-family: 'Bellavoir Delight', serif;
     font-weight: 400;
     font-style: normal;
-    flex-flow: nowrap;
-    font-size: clamp(48px, 12vw, 240px);
-    letter-spacing: -0.011em;
+    font-size: clamp(48px, 12vw, 160px);
+    letter-spacing: var(--ls-tight);
     color: var(--black);
 }
 
@@ -319,7 +326,7 @@ footer {
     justify-content: center;
     align-items: flex-start; /* don't force equal heights */
     margin-top: 40px;
-    overflow-x: clip;
+    overflow-x: visible;
     overflow-y: visible;
     margin-bottom: 80px;
     position: relative; /* enables z-index on children */
@@ -333,7 +340,6 @@ footer {
     display: flex;
     position: relative;
     transform-origin: center;
-    transition: opacity .25s ease, box-shadow .25s ease;
 }
 
 .note-blue {
@@ -379,7 +385,7 @@ footer {
     margin: 8px 0;
 }
 
-/* mobile: undo the effect so they can be stacked - should look at other mobile breakpoints for consistency */
+/* mobile: undo the effect so they can be stacked */
 @media (max-width: 900px){
   .notes{
       flex-direction: column;
@@ -411,20 +417,8 @@ footer {
     }
 }
 
-/* respect reduced motion */
-@media (prefers-reduced-motion: reduce){
-    .notes > article{ transition: none; }
-}
-
 
 /* WORK SPOTS PAGE */
-/* page layout */
-main{max-width: 1000px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 24px 64px;
-    box-sizing: border-box; /* keeps padding inside the 1000px cap */}
-
 /* header bar */
 .work-table{
     width: 100%;
@@ -444,10 +438,9 @@ main{max-width: 1000px;
 .work-table thead th:first-child{ border-top-left-radius: 16px; border-bottom-left-radius: 16px; }
 .work-table thead th:last-child { border-top-right-radius: 16px; border-bottom-right-radius: 16px; }
 
-/* i want box shadow later - will try to debug so that it doesn't appear for every cell */
 .work-table tbody td,
 .work-table tbody th[scope="row"]{
-    background-clip: padding-box;
+    background-clip: padding-box; /* make sure cell backgrounds don’t bleed past corners */
     padding: 18px 16px;
     vertical-align: middle;
     border: none;
@@ -458,7 +451,12 @@ main{max-width: 1000px;
 .work-table tbody tr > *:first-child{ border-top-left-radius: 16px; border-bottom-left-radius: 16px; }
 .work-table tbody tr > *:last-child { border-top-right-radius: 16px; border-bottom-right-radius: 16px; }
 
-/* automatic row colors based on your data attribute */
+/* automatic row colors based on your data attribute
+ * so the purpose of these data attributes is that in the future,
+ * I want to be able to filter these entries using JS under tags.
+ * I.e. if i loved it, then you can filter for the ones I loved;
+ * if I haven't tried it yet and you want to do that activity with me, then
+ * we can filter by to try. */
 .work-table tbody tr[data-status="loved"]  > *{ background: var(--lightblue); }
 .work-table tbody tr[data-status="to-try"] > *{ background: var(--lightgrey); }
 
@@ -468,8 +466,6 @@ main{max-width: 1000px;
     font-weight: 700;
     text-decoration: none;
 }
-/* hover behaviour */
-.work-table tbody th[scope="row"] a:hover{ text-decoration: underline; }
 
 /* status pill on the right */
 .work-table td:last-child{ text-align: left; }
@@ -483,45 +479,25 @@ main{max-width: 1000px;
     text-transform: lowercase;
 }
 
-/* column sizing */
-.work-table thead th:nth-child(1){width: 120px;} /* borough */
-.work-table thead th:nth-child(2){width: 220px;} /* loc (address) */
-.work-table thead th:nth-child(3){width: 220px;} /* name */
-.work-table thead th:nth-child(4){width: 220px;} /* hours */
-.work-table thead th:nth-child(5){width: 80px;} /* wifi */
-.work-table thead th:nth-child(6){width: 220px;} /* type */
-.work-table thead th:nth-child(7){width: 160px;} /* status */
-
-/* one outer shadow per row */
-.work-table tbody tr {
-    /* the row is a “layer”, then we cast a shadow from it */
-    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.05));
-}
-
-/* make sure cell backgrounds don’t bleed past corners */
-.work-table tbody tr > * {
-    background-clip: padding-box;
-}
-
 /* fade non-hovered row */
 .work-table:hover tbody tr:not(:hover) td,
 .work-table:hover tbody tr:not(:hover) th {
-    opacity: .80;
-    transition: opacity .25s ease;
+    opacity: .5;
+    transition: opacity .5s ease;
 }
 
 /* match card shadows */
 .work-table tbody tr:hover {
-    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.08));
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
     transition: filter .25s ease, opacity .25s ease;
 }
 
 /* sticky table header */
 .work-table thead th {
     position: sticky;
-    top: calc(var(--nav-height) + 48px);
-    background: #ffffffee; /* slight transparency with solid white fallback */
-    backdrop-filter: blur(6px);
+    top: 80px;
+    background: var(--white);
+    opacity: .9;
     z-index: 3;
 }
 
@@ -537,7 +513,7 @@ main{max-width: 1000px;
         display: none;
     }
 
-    /* adjust row spacing */
+    /* adjust row radius */
     .work-table thead th:first-child {
         border-top-left-radius: 16px;
         border-bottom-left-radius: 16px;
@@ -562,25 +538,20 @@ main{max-width: 1000px;
         display: none;
     }
 
-    /* adjust row spacing */
-    .work-table thead th:first-child {
-        border-top-left-radius: 16px;
-        border-bottom-left-radius: 16px;
-    }
-    .work-table thead th:last-child {
-        border-top-right-radius: 16px;
-        border-bottom-right-radius: 16px;
-    }
-
     /* round the left/right ends of the second row column now*/
     /* this first one is the title, and the second line is all the actual rows of the table */
     .work-table thead tr > *:nth-child(2){ border-top-left-radius: 16px; border-bottom-left-radius: 16px; }
     .work-table tbody tr > *:nth-child(2){ border-top-left-radius: 16px; border-bottom-left-radius: 16px; }
+
 }
 
 
 
-/* ACITIVITES PAGE */
+/* ACITIVITES / MUSEUMS / SIGHTSEEING PAGES */
+
+/* page layout */
+.activities__cards{
+    max-width: 1200px; /* just change the main width to be wider than on the index and work spots pages */}
 
 .page-title {
     text-align: center;
@@ -589,9 +560,8 @@ main{max-width: 1000px;
 
 /* masonry-style 3 columns */
 .cards{
-    column-count: 3;
+    columns: 250px;
     column-gap: var(--card-gap);
-    padding: 0 var(--card-gap);
 }
 
 /* the item that flows in columns (no shadow here) */
@@ -603,13 +573,16 @@ main{max-width: 1000px;
 
 /* the visual box */
 .card__surface{
-    background: var(--lightgrey);
     border-radius: 16px;
     padding: 40px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.05);
 }
 
-/* status-based automatic styling (from your data-status) */
+/* status-based automatic styling (from your data-status)
+ * so the purpose of these data attributes is that in the future,
+ * I want to be able to filter these entries using JS under tags.
+ * I.e. if i loved it, then you can filter for the ones I loved;
+ * if I haven't tried it yet and you want to do that activity with me, then
+ * we can filter by to try. */
 .card[data-status="to-do"] .card__surface { background: var(--lightgrey); }
 .card[data-status="loved"] .card__surface { background: var(--lightblue); }
 .card[data-status="loved"] .card__media img {
@@ -621,7 +594,12 @@ main{max-width: 1000px;
     filter: grayscale(0%);
 }
 
-/* tags + title */
+/* tags + title
+ * in the future, should also consider making these tags into data attributes -
+ * so that you can also filter with tags for different boroughs. That way
+ * I can search through which neighbourhoods I'm nearby,
+ * or maybe a friend can look through it and see which borough they want to
+ * visit.*/
 .card__tags { display: flex; gap: 8px; flex-wrap: wrap; color: var(--darkgrey); }
 .card__title { margin: 32px 0 16px; }
 
@@ -636,50 +614,38 @@ main{max-width: 1000px;
 .card__credit { font-size: .75rem; color: var(--darkgrey); margin-top: 6px;}
 .card__body { line-height: 1.5; }
 
-/* make whole card clickable */
-.card{
-    position: relative; /* needed so overlay positions to card */
-}
-
-/* stretched overlay link */
-.card__overlay{
-    position: absolute;
-    inset: 0; /* fill entire card area */
-    z-index: 1;
-    border-radius: 16px; /* match card corner */
-    cursor: pointer;
-}
-
-/* any real links inside the card sit above overlay */
 .card__surface a{
     position: relative;
-    z-index: 2;
 }
 
 /* hover/active interactions that apply only to the card surface */
 .card:hover .card__surface{
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    transition: filter .25s ease, opacity .25s ease;
 }
 
-/* fade others */
-.cards:hover .card:not(:hover) .card__surface{
-    opacity: .80;
+/* fade others - the has(.card:hover) function serves like an if function;
+ * if one card is hovered, the the other cards will have surface opacity of .5 */
+.cards:has(.card:hover) .card:not(:hover) .card__surface{
+    opacity: .50;
+    transition: opacity .5s ease;
 }
 
-/* responsive behaviour: drop to 2 columns, then 1
- * also want the padding to be a little thinner on the cards
+/* responsive behaviour: I want the padding to be a little thinner on the cards
  * so the text and images can take up more space */
 @media (max-width: 1000px){
-    .cards{ column-count: 2; }
-    .card__surface{
-        padding: 24px;
-    }
-}
-@media (max-width: 600px){
-    .cards{ column-count: 1; }
     .card__surface{
         padding: 24px;
     }
 }
 
-
+/* REDUCED MOTION - CSS consolidated at the bottom */
+@media (prefers-reduced-motion: reduce){
+    .notes > article{ transition: none; }
+    .cards:has(.card:hover) .card:not(:hover) .card__surface{ transition: none;}
+    .card:hover .card__surface{ transition: none;}
+    .card[data-status="loved"] .card__media img { transition: none ;}
+    .work-table:hover tbody tr:not(:hover) td, .work-table:hover tbody tr:not(:hover) th { transition: none; }
+    .work-table tbody tr:hover { transition: none; }
+    a {transition: none;}
+}

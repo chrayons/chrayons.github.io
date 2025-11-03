@@ -11,15 +11,17 @@
     <header>
         <nav aria-label="Primary">
             <!-- hamburger button for mobile -->
-            <!-- this means it's hidden with css and then becomes
-            the menu open and close state. ie if the nav-toggle is checked, then
-            we can have something appear or an action be done or something-->
-            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+
             <!-- this is a label acting as the button. <label for="nav-toggle"> binds
             the label onto the checkbox. the label is the little ☰ (hamburger) -->
             <label for="nav-toggle" class="hamburger" aria-label="Toggle navigation">☰</label>
 
-            <!-- this is an unordered list (requirement), but will also become our sticky navbar -->
+            <!-- this means it's hidden with css and then becomes
+            the menu open and close state. ie if the nav-toggle is checked, then
+            we can have something appear or an action be done or something-->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+
+            <!-- this is an unordered list (requirement), but will also become our fixed navbar -->
             <ul class="nav-menu text-small-header" id="nav-menu">
                 <li><a href="index.html">ABOUT</a></li>
                 <li><a href="activities.html" aria-current="page">ACTIVITIES</a></li>
@@ -30,7 +32,7 @@
         </nav>
     </header>
 
-  <main>
+  <main class="activities__cards">
       <h1 class="page-title text-header">activities</h1>
       <!-- CARD LIST/COLUMNS - should turn into 3 columns with css -->
       <section class="cards" aria-label="Activities list">
@@ -45,7 +47,7 @@
                   <h2 class="card__title text-title"> <a href="https://www.caseyrubberstamps.com/"> Casey Rubber Stamps </a></h2>
               <figure class="card__media">
                   <img src="img/caseyrubberstamp.webp" alt="Image of rubber stamps, arranged in rows on a shop display.">
-                  <figcaption class="card__credit text-note-sm">Image courtesy of
+                  <figcaption class="card__credit text-note">Image courtesy of
                       <a href="https://maps.google.com/maps/contrib/106383878528561774651">Luke Martin Pitcher</a>.</figcaption>
               </figure>
               <div class="card__body text-body">
@@ -66,7 +68,7 @@
                   <h2 class="card__title text-title"> <a href="https://www.goldstarfragrances.com/"> Gold Star Fragrances </a></h2>
               <figure class="card__media">
                   <img src="img/goldstarperfume.webp" alt="Image of the exterior window of Gold Star Fragrances.">
-                  <figcaption class="card__credit text-note-sm">Image courtesy of
+                  <figcaption class="card__credit text-note">Image courtesy of
                       <a href="https://maps.google.com/maps/contrib/110621779020074290962">Sabina Chowdhury</a>.</figcaption>
               </figure>
               <div class="card__body text-body">
@@ -85,7 +87,7 @@
                   <h2 class="card__title text-title"> <a href="https://www.craftsmanave.com/"> Craftsman Ave </a></h2>
               <figure class="card__media">
                   <img src="img/craftsmanave.jpg" alt="Image of a copper lamp, made through a Craftsman Ave workshop.">
-                  <figcaption class="card__credit text-note-sm">Image courtesy of
+                  <figcaption class="card__credit text-note">Image courtesy of
                       <a href="https://craftsmanave.com/welding-and-metalwork-classes/">Craftsman Ave</a>.</figcaption>
               </figure>
               <div class="card__body text-body">
@@ -106,7 +108,7 @@
                   <h2 class="card__title text-title"> <a href="https://www.highvalleybooks.com/"> High Valley Books </a></h2>
               <figure class="card__media">
                   <img src="img/highvalleybooks.webp" alt="Image of a graphic representing the design of digital records.">
-                  <figcaption class="card__credit text-note-sm">Image courtesy of
+                  <figcaption class="card__credit text-note">Image courtesy of
                       <a href="https://www.nytimes.com/2024/06/12/style/high-valley-books-bill-hall.html">Scott Rossi/New York Times</a>.</figcaption>
               </figure>
               <div class="card__body text-body">
@@ -125,7 +127,7 @@
                   <h2 class="card__title text-title"> <a href="https://www.index-space.org/products/designing-digital-records"> Designing Digital Records </a></h2>
               <figure class="card__media">
                   <img src="img/designingdigitalrecords.avif" alt="Image of a graphic representing the design of digital records.">
-                  <figcaption class="card__credit text-note-sm">Image courtesy of
+                  <figcaption class="card__credit text-note">Image courtesy of
                       <a href="https://luma.com/5ymhto3h?tk=Z6GBpE">Index</a>.</figcaption>
               </figure>
               <div class="card__body text-body">
@@ -145,7 +147,7 @@
                   <h2 class="card__title text-title"> <a href="https://www.templecourtnyc.com/"> Temple Court Ballroom </a></h2>
               <figure class="card__media">
                   <img src="img/templecourt.webp" alt="Image of a bar with extravagant furnishings.">
-                  <figcaption class="card__credit text-note-sm">Image courtesy of
+                  <figcaption class="card__credit text-note">Image courtesy of
                       <a href="https://www.gkvarchitects.com/temple-court-restaurant-bar"> GKV Architects</a>.</figcaption>
               </figure>
               <div class="card__body text-body">
@@ -166,7 +168,7 @@
                   <h2 class="card__title text-title"> <a href="https://powerhousearts.org/"> Powerhouse Arts Center </a></h2>
               <figure class="card__media">
                   <img src="img/gowanus.webp" alt="Image of a red brick building, previously the abandoned Brooklyn Rapid Transit Powerhouse on the Gowanus Canal.">
-                  <figcaption class="card__credit text-note-sm">Image courtesy of
+                  <figcaption class="card__credit text-note">Image courtesy of
                       <a href="https://www.uag.nyc/gowanus-batcave-is-transformed-into-powerhouse-arts-center/">Albert Vecerka/ESTO</a>.</figcaption>
               </figure>
               <div class="card__body text-body">
@@ -189,7 +191,7 @@
                   <h2 class="card__title text-title"> <a href="https://www.cellardog.net/"> Cellar Dog </a></h2>
               <figure class="card__media">
                   <img src="img/cellardog.webp" alt="Image of pool tables in dim lighting.">
-                  <figcaption class="card__credit text-note-sm">Image courtesy of
+                  <figcaption class="card__credit text-note">Image courtesy of
                       <a href="https://www.cellardog.net/">Cellar Dog</a>.</figcaption>
               </figure>
               <div class="card__body text-body">
@@ -209,7 +211,7 @@
                       <a href="https://www.seriouseats.com/where-to-eat-chinese-best-restaurants-flushing-queens-chinatown-nyc"> Flushing Food Crawl </a></h2>
               <figure class="card__media">
                   <img src="img/flushing.webp" alt="Image of shaobing.">
-                  <figcaption class="card__credit text-note-sm">Image courtesy of
+                  <figcaption class="card__credit text-note">Image courtesy of
                       <a href="https://www.thechoppingblock.com/blog/a-food-tour-of-flushing-queens">Alex from the Chopping Block</a>.</figcaption>
               </figure>
               <div class="card__body text-body">
@@ -230,7 +232,7 @@
                   <h2 class="card__title text-title"> <a href="https://www.nycjewelrylab.com/"> Jewelry Workshop with Carolina Iwanow </a></h2>
               <figure class="card__media">
                   <img src="img/carolinaiwanow.webp" alt="Image of different silver jewelry made in Carolina Iwanow's workshop.">
-                  <figcaption class="card__credit text-note-sm">Image courtesy of
+                  <figcaption class="card__credit text-note">Image courtesy of
                       <a href="https://www.nycjewelrylab.com/">Carolina Iwanov/NYC Jewelry Lab</a>.</figcaption>
               </figure>
               <div class="card__body text-body">
@@ -251,7 +253,7 @@
                   <h2 class="card__title text-title"> <a href="https://www.ciaoevento.com/"> Evento Cooking Class </a></h2>
               <figure class="card__media">
                   <img src="img/ciaoevento.webp" alt="Image of someone making pasta from scratch using dough.">
-                  <figcaption class="card__credit text-note-sm">Image courtesy of
+                  <figcaption class="card__credit text-note">Image courtesy of
                       <a href="https://www.ciaoevento.com/events/handmade-pasta/">Evento</a>.</figcaption>
               </figure>
               <div class="card__body text-body">
@@ -271,7 +273,7 @@
                   <h2 class="card__title text-title"> <a href="https://www.ticketweb.com/venue/brownstonejazz-brooklyn-ny/417015"> BrownstoneJazz Bedstuy </a></h2>
               <figure class="card__media">
                   <img src="img/brownstonejazz.jpg" alt="Image of handmade lamps.">
-                  <figcaption class="card__credit text-note-sm">Image courtesy of
+                  <figcaption class="card__credit text-note">Image courtesy of
                       <a href="https://www.ticketweb.com/venue/brownstonejazz-brooklyn-ny/417015">BrownstoneJazz</a>.</figcaption>
               </figure>
               <div class="card__body text-body">
@@ -292,7 +294,7 @@
                   <h2 class="card__title text-title"> <a href="https://www.caffereggio.com/"> Caffe Reggio </a></h2>
               <figure class="card__media">
                   <img src="img/caffereggio.webp" alt="Image of Caffe Reggio at night, with warm lighting on interiors painted green.">
-                  <figcaption class="card__credit text-note-sm">Image courtesy of
+                  <figcaption class="card__credit text-note">Image courtesy of
                       <a href="https://maps.google.com/maps/contrib/105874345534951453167">Barbara Philliips</a>.</figcaption>
               </figure>
               <div class="card__body text-body">
@@ -312,7 +314,7 @@
                   <h2 class="card__title text-title"> <a href="https://www.nyctourism.com/restaurants/time-out-market-new-york/"> Timeout Market Dumbo </a></h2>
               <figure class="card__media">
                   <img src="img/timeout.jpeg" alt="Image of a bridge in New York in the background and people in the foreground, taken from the Time Out Market terrace.">
-                  <figcaption class="card__credit text-note-sm">Image courtesy of
+                  <figcaption class="card__credit text-note">Image courtesy of
                       <a href="https://www.nyctourism.com/restaurants/time-out-market-new-york/">Ali Garber</a>.</figcaption>
               </figure>
               <div class="card__body text-body">
@@ -333,7 +335,7 @@
                   <h2 class="card__title text-title"> <a href="https://urbanglass.org/classes/detail/intro-to-sparkly-beads-metals-foils-leaf-and-aventurine"> Urban Glass Workshop </a></h2>
                   <figure class="card__media">
                       <img src="img/urbanglass.jpeg" alt="Image of handmade glass beads.">
-                      <figcaption class="card__credit text-note-sm">Image courtesy of <a href="https://urbanglass.org/classes/detail/intro-to-sparkly-beads-metals-foils-leaf-and-aventurine">Urban Glass</a>. </figcaption>
+                      <figcaption class="card__credit text-note">Image courtesy of <a href="https://urbanglass.org/classes/detail/intro-to-sparkly-beads-metals-foils-leaf-and-aventurine">Urban Glass</a>. </figcaption>
                   </figure>
                   <div class="card__body text-body">
                       <p>I would love to make a sparkly bead to add to my bracelets
@@ -353,7 +355,7 @@
                   <h2 class="card__title text-title"> <a href="https://luma.com/nusproduktlampe?k=c"> Nusprodukte Lamp Workshop </a></h2>
               <figure class="card__media">
                   <img src="img/nusprodukt.jpeg" alt="Image of handmade lamps.">
-                  <figcaption class="card__credit text-note-sm">Image courtesy of
+                  <figcaption class="card__credit text-note">Image courtesy of
                       <a href="https://www.instagram.com/p/DNCD_kHyHTq/?img_index=2">paloma.of.all.trades</a>.</figcaption>
               </figure>
               <div class="card__body text-body">
@@ -372,7 +374,7 @@
                   <h2 class="card__title text-title" > <a href="https://brooklynglass.com/index.php/class/glass-rings-2/"> Brooklyn Glass Ring Workshop</a></h2>
               <figure class="card__media">
                   <img src="img/brooklynglass.jpeg" alt="Image of handmade glass rings.">
-                  <figcaption class="card__credit text-note-sm">Image courtesy of
+                  <figcaption class="card__credit text-note">Image courtesy of
                       <a href="https://brooklynglass.com/index.php/class/glass-rings-2/">Brooklyn Glass</a>.</figcaption>
               </figure>
               <div class="card__body text-body">
@@ -394,7 +396,7 @@
               <h2 class="card__title text-title"><a href="https://secretrisoclub.com/Workshops">SRC Risograph Workshop</a></h2>
               <figure class="card__media">
                   <img src="img/secretrisoclub.png" alt="Image of a Pokemon Risograph workshop ad.">
-                  <figcaption class="card__credit text-note-sm">Image courtesy of
+                  <figcaption class="card__credit text-note">Image courtesy of
                       <a href="https://secretrisoclub.com/Pokemon-Booster-Workshop">Secret Riso Club</a>.</figcaption>
               </figure>
               <div class="card__body text-body">
@@ -416,7 +418,7 @@
               <h2 class="card__title text-title"><a href="https://www.maybehappyending.com/">Maybe Happy Ending Broadway Show</a></h2>
               <figure class="card__media">
                   <img src="img/maybehappyending.webp" alt="Image of Maybe Happy Ending cast.">
-                  <figcaption class="card__credit text-note-sm">Image courtesy of
+                  <figcaption class="card__credit text-note">Image courtesy of
                       <a href="https://www.newyorktheatreguide.com/theatre-news/news/everything-you-need-to-know-about-maybe-happy-ending-on-broadway">Matthew Murphy and Evan Zimmerman</a>.</figcaption>
               </figure>
               <div class="card__body text-body">
@@ -437,7 +439,7 @@
               <h2 class="card__title text-title"><a href="https://luckyrisograph.press/workshops">Lucky Risograph Workshop</a></h2>
               <figure class="card__media">
                   <img src="img/luckyrisograph.webp" alt="Image of a risograph print with a crab holding a heart saying 'xie xie'.">
-                  <figcaption class="card__credit text-note-sm">Image courtesy of
+                  <figcaption class="card__credit text-note">Image courtesy of
                       <a href="https://luckyrisograph.press/workshops">Lucky Risograph</a>.</figcaption>
               </figure>
               <div class="card__body text-body">
@@ -452,7 +454,7 @@
     </main>
 
     <footer>
-        <p class="text-note-sm">&copy; 2025 Christina Lu. All rights reserved.</p>
+        <p class="text-note">&copy; 2025 Christina Lu. All rights reserved.</p>
     </footer>
 
 </body>
