@@ -9,8 +9,6 @@ html, body {
         src: url('/fonts/OpenSauceOne-Light.ttf') format('truetype');
         font-weight: 300; /* Light */
         font-style: normal;
-        font-display: swap; /* this means if the font is taking too long to load,
-                             * a backup will show up */
     }
 
     @font-face {
@@ -18,8 +16,6 @@ html, body {
         src: url("/fonts/OpenSauceOne-Regular.ttf") format("truetype");
         font-weight: 400;
         font-style: normal;
-        font-display: swap; /* this means if the font is taking too long to load,
-                             * a backup will show up */
     }
 
     @font-face {
@@ -27,8 +23,6 @@ html, body {
         src: url('/fonts/OpenSauceOne-Medium.ttf') format('truetype');
         font-weight: 500;
         font-style: normal;
-        font-display: swap; /* this means if the font is taking too long to load,
-                             * a backup will show up */
     }
 
     @font-face {
@@ -36,8 +30,6 @@ html, body {
         src: url('/fonts/OpenSauceOne-SemiBold.ttf') format('truetype');
         font-weight: 600;
         font-style: normal;
-        font-display: swap; /* this means if the font is taking too long to load,
-                             * a backup will show up */
     }
 
     @font-face {
@@ -45,8 +37,6 @@ html, body {
         src: url('/fonts/OpenSauceOne-Bold.ttf') format('truetype');
         font-weight: 800;
         font-style: normal;
-        font-display: swap; /* this means if the font is taking too long to load,
-                             * a backup will show up */
     }
 
     @font-face {
@@ -54,8 +44,6 @@ html, body {
         src: url('/fonts/BellavoirDelight.otf') format('opentype');
         font-weight: 400;
         font-style: normal;
-        font-display: swap; /* this means if the font is taking too long to load,
-                             * a backup will show up */
     }
 
 /* UNIVERSAL FONT STYLES / GUIDES */
@@ -78,7 +66,7 @@ html, body {
 
     /*header nav*/
     --nav-height: 20px;
-    --mobile-nav-height: 40px;
+    --mobile-nav-height: 30px;
 
     /* gaps for pages with cards or rows*/
     --card-gap: 32px; /* gap between different cards on activities, museum, sightseeing */
@@ -310,6 +298,16 @@ footer {
 /* small-screen */
 @media (max-width: 900px){
     .hero-title-serif { margin-top: -0.22em; }
+}
+
+.tag-grey{
+    background: var(--lightgrey);
+    padding: 4px;
+}
+
+.tag-blue{
+    background: var(--lightblue);
+    padding: 4px;
 }
 
 .notes{
