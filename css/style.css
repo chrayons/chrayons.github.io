@@ -1,8 +1,3 @@
-/* make all pages have a off-white bg */
-html, body {
-    background-color: var(--white);
-}
-
 /* ADDING THE UNIVERSAL FONTS AT THE TOP FOR EASY REFERENCE*/
     @font-face {
         font-family: 'Open Sauce One';
@@ -51,11 +46,10 @@ html, body {
     --font-sans: "Open Sauce One", system-ui, sans-serif;
     --font-serif: "Bellavoir Delight", serif;
 
-    /* helpful letter-spacing tokens */
+    /* Letter-spacing tokens */
     --ls-wide: 0.01em; /* +1%  */
     --ls-tight: -0.011em; /* -1.1% */
 
-    /* update these universal colours for other pages*/
     --blue:#BAE4F8;
     --lightblue: #D6F2FF;
     --black:#353131;
@@ -64,68 +58,72 @@ html, body {
     --green: #0F8866;
     --lightgrey: #EDEFF1;
 
-    /* gaps for pages with cards or rows*/
-    --card-gap: 32px; /* gap between different cards on activities, museum, sightseeing */
-    --row-gap: 18px; /* vertical space between rows in the work spots table */
+    /*Gaps for pages with cards or rows*/
+    --card-gap: 32px; /* Gap between different cards on activities, museum, sightseeing */
+    --row-gap: 18px; /* Vertical space between rows in the work spots table */
 }
 
-/* body text */
+/* Make all pages have a off-white bg */
+html, body {
+    background-color: var(--white);
+}
+
+/* Body text */
 .text-body{
     font-family: var(--font-sans);
-    font-weight: 300;
+    font-weight: 300; /* Light */
     font-size: 12px;
     line-height: 1.5; /* 150% */
     letter-spacing: var(--ls-wide);
     text-transform: none;
 }
 
-/* note */
+/* Note */
 .text-note{
     font-family: var(--font-sans);
-    font-weight: 300; /* light */
+    font-weight: 300; /* Light */
     font-size: 12px;
     line-height: 1.5;
     letter-spacing: var(--ls-wide);
 }
 
-/* tag */
+/* Tag */
 .text-tag{
     font-family: var(--font-sans);
-    font-weight: 300; /* light */
+    font-weight: 300; /* Light */
     font-size: 12px;
     line-height: 1.5;
     letter-spacing: var(--ls-wide);
     font-style: italic;
 }
 
-/* small header */
+/* Small header */
 .text-small-header{
     font-family: var(--font-sans);
     font-weight: 500; /* Medium */
     font-size: 16px;
-    line-height: 1.5; /* 150% */
+    line-height: 1.5;
     letter-spacing: var(--ls-tight);
     text-transform: capitalize;
 }
 
-/* title */
+/* Title */
 .text-title{
     font-family: var(--font-sans);
-    font-weight: 700; /* bold */
+    font-weight: 700; /* Bold */
     font-size: 24px;
-    line-height: 1.2; /* 120% */
+    line-height: 1.2;
     letter-spacing: var(--ls-tight);
 }
 
-/* header (display) */
+/* Header (display) */
 .text-header{
     font-family: var(--font-serif);
     font-weight: 400; /* Regular */
-    /* NOTE TO SELF still not entirely sure how clamp works but i want the text
-     * to fill the space properly and not be too big as you're decreasing the
-     * width of the screen */
-    font-size: clamp(48px, 12vw, 160px);
-    line-height: 1.5; /* 150% */
+    font-size: clamp(48px, 12vw, 160px); /* Learned of clamp() function
+                                         * through https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/.
+                                         * Used as a reference, and still needs to be further understood */
+    line-height: 1.5;
     letter-spacing: var(--ls-tight);
 }
 
@@ -144,9 +142,8 @@ a:focus-visible {
 }
 
 
-/* MAKE THE NAV FIXED SO IT STAYS ON SCROLL
- * I initially used sticky, but since it didn’t need to be constrained to the container,
- * fixed is a simpler solution */
+/* NAV BAR */
+/* Fixed nav to remain visible during scroll */
 
 header {
     position: fixed;
@@ -158,12 +155,6 @@ header {
     padding: 16px;
     opacity: 0.95;
 }
-
-/* keep hamburger position relative to the nav bar */
-header nav {
-    position: relative;
-}
-
 
 /* NAV COLORS + HOVER + ACTIVE */
 .nav-menu a {
@@ -184,6 +175,10 @@ header nav {
     text-underline-offset: 4px;
 }
 
+/* Mobile/desktop navigation referenced from:
+ * https://threkk.medium.com/how-to-make-a-css-only-hamburger-menu-f7ad41e13399
+ * Modified with peer guidance and customized to fit my design. */
+
 /* DESKTOP NAV */
 .nav-menu {
     list-style: none;
@@ -195,11 +190,16 @@ header nav {
     align-items: center;
 }
 
-/* this hides UI on desktop */
+/* This hides UI on desktop */
 nav input[type="checkbox"],
 nav label { display: none;}
 
-/* hamburger - hide unless mobile */
+/* Keep hamburger position relative to the nav bar */
+header nav {
+    position: relative;
+}
+
+/* Hamburger - hide unless mobile */
 .hamburger{
     font-size: 28px;
     cursor: pointer;
@@ -254,13 +254,14 @@ footer {
 
 
 /* INDEX PAGE */
-/* page layout */
+/* Page layout */
 main{
     max-width: 850px;
     width: 100%;
     margin: 0 auto;
     padding: 0 24px 24px;
-    box-sizing: border-box; /* keeps padding inside the 1000px cap */}
+    box-sizing: border-box; /* Keeps padding inside the 1000px cap */
+}
 
 .hero-container{
     width: 100%;
@@ -275,7 +276,7 @@ main{
     margin-inline: auto;
 }
 
-/* top line */
+/* Top line */
 .hero-title-sans{
     display: block;
     margin-bottom: 0; /* no extra space */
@@ -283,12 +284,14 @@ main{
     font-family: 'Open Sauce One', sans-serif;
     font-weight: 700;
     font-style: normal;
-    font-size: clamp(32px, 6vw, 120px);
+    font-size: clamp(32px, 6vw, 120px); /* Learned of clamp() function
+                                         * through https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
+                                         * used as a reference, but still need to be further understood */
     letter-spacing: var(--ls-tight);
     color: var(--blue);
 }
 
-/* second line */
+/* Second line */
 .hero-title-serif{
     display: block;
     margin-top: -0.28em; /* overlap for the top */
@@ -297,12 +300,14 @@ main{
     font-family: 'Bellavoir Delight', serif;
     font-weight: 400;
     font-style: normal;
-    font-size: clamp(48px, 12vw, 160px);
+    font-size: clamp(48px, 12vw, 160px); /* Learned of clamp() function
+                                         * through https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
+                                         * used as a reference, but still need to be further understood */
     letter-spacing: var(--ls-tight);
     color: var(--black);
 }
 
-/* small-screen */
+/* Small-screen */
 @media (max-width: 900px){
     .hero-title-serif { margin-top: -0.22em; }
 }
@@ -332,8 +337,8 @@ main{
     position: relative; /* enables z-index on children */
 }
 
-/* the notes are the first child of the article we wrote in html, so it
- * only affects that*/
+/* Using the > child selector for more targeted styling.
+ * Ref: https://www.geeksforgeeks.org/css/what-is-greater-than-sign-selector-in-css/# and peer guidance */
 .notes > article {
     max-width: 420px;
     min-width: 0;
@@ -373,7 +378,7 @@ main{
 
 /* remove browser default extra margins that add phantom space */
 .note-inner h2 {
-    margin: 0 0 12px;
+    margin-bottom: 12px;
     line-height: 1.5;
 }
 .note-inner ul,
@@ -419,7 +424,12 @@ main{
 
 
 /* WORK SPOTS PAGE */
-/* header bar */
+
+/* Table styling based on this tutorial:
+ * https://youtu.be/Oy9K7iz3aa4?si=SdvylTyoonh4m47W
+ * Loosely followed and customized to match my Figma design, adapted through discussion with peers. */
+
+/* Header bar */
 .work-table{
     width: 100%;
     border-collapse: separate; /* rounded corners + spacing */
@@ -447,27 +457,32 @@ main{
     box-shadow: none;
 }
 
-/* round the left/right ends of each row */
-.work-table tbody tr > *:first-child{ border-top-left-radius: 16px; border-bottom-left-radius: 16px; }
-.work-table tbody tr > *:last-child { border-top-right-radius: 16px; border-bottom-right-radius: 16px; }
+/* Using the > child selector for more targeted styling.
+ * Ref: https://www.geeksforgeeks.org/css/what-is-greater-than-sign-selector-in-css/# and peer guidance */
+.work-table tbody tr > *:first-child{ border-top-left-radius: 16px; border-bottom-left-radius: 16px; } /* Round the left ends of each row */
+.work-table tbody tr > *:last-child { border-top-right-radius: 16px; border-bottom-right-radius: 16px; } /* Round the right ends of each row */
 
-/* automatic row colors based on your data attribute
- * so the purpose of these data attributes is that in the future,
- * I want to be able to filter these entries using JS under tags.
- * I.e. if i loved it, then you can filter for the ones I loved;
- * if I haven't tried it yet and you want to do that activity with me, then
- * we can filter by to try. */
+/* Style rows based on their data-status value ("loved" and "to-try").
+ * Plan to enable future JS filtering by status, hence why data attributes were needed. */
+
+/* Using data-* attributes to style cards and enable future filtering.
+ * Ref: https://css-tricks.com/a-complete-guide-to-data-attributes/
+ * and
+ * https://dev.to/dev-harbiola/custom-data-attributes-in-html-a-guide-to-data--373 */
+
 .work-table tbody tr[data-status="loved"]  > *{ background: var(--lightblue); }
 .work-table tbody tr[data-status="to-try"] > *{ background: var(--lightgrey); }
 
-/* name column = row header link */
-.work-table tbody th[scope="row"] a{
+/* This is the header, that applies to the entire row it's in.
+ * In this case, the header is the name of the location. */
+.work-table tbody th[scope="row"]{
     color: inherit;
-    font-weight: 700;
-    text-decoration: none;
+    font-weight: inherit;
+    text-decoration: inherit;
+    text-align: inherit;
 }
 
-/* status pill on the right */
+/* Status pill on the right */
 .work-table td:last-child{ text-align: left; }
 .work-table .status{
     display: inline-block;
@@ -479,20 +494,26 @@ main{
     text-transform: lowercase;
 }
 
-/* fade non-hovered row */
+/* Set column widths on tables, just making sure the
+ * name has a wider column and the less text-heavy or crucial info has narrower columns */
+.work-table th:nth-child(1) {width: 100px; }
+.work-table th:nth-child(5) {width: 30px; }
+.work-table th:nth-child(6) {width: 40px; }
+
+/* Fade non-hovered row */
 .work-table:hover tbody tr:not(:hover) td,
 .work-table:hover tbody tr:not(:hover) th {
     opacity: .5;
     transition: opacity .5s ease;
 }
 
-/* match card shadows */
+/* Match card shadows */
 .work-table tbody tr:hover {
-    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
-    transition: filter .25s ease, opacity .25s ease;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    transition: box-shadow .25s ease;
 }
 
-/* sticky table header */
+/* Sticky table header */
 .work-table thead th {
     position: sticky;
     top: 80px;
@@ -501,7 +522,7 @@ main{
     z-index: 3;
 }
 
-/* hide some columns on smaller screens */
+/* Hide some columns on smaller screens */
 @media (max-width: 900px) {
     /* hide hours, wifi, type (columns 4, 5, 6) */
     .work-table th:nth-child(4),
@@ -513,7 +534,7 @@ main{
         display: none;
     }
 
-    /* adjust row radius */
+    /* Adjust row radius */
     .work-table thead th:first-child {
         border-top-left-radius: 16px;
         border-bottom-left-radius: 16px;
@@ -524,11 +545,11 @@ main{
     }
 }
 
-/* on iphone, hide borough, since this was causing horizontal scroll */
+/* On mobile, hide borough, since this was causing horizontal scroll */
 @media (max-width: 500px) {
-    /* hide borough, hours, wifi, type (columns 1, 4, 5, 6) */
-    .work-table th:nth-child(1),
-    .work-table td:nth-child(1),
+    /* hide borough, hours, wifi, type (columns 2, 4, 5, 6) */
+    .work-table th:nth-child(2),
+    .work-table td:nth-child(2),
     .work-table th:nth-child(4),
     .work-table td:nth-child(4),
     .work-table th:nth-child(5),
@@ -537,38 +558,35 @@ main{
     .work-table td:nth-child(6) {
         display: none;
     }
-
-    /* round the left/right ends of the second row column now*/
-    /* this first one is the title, and the second line is all the actual rows of the table */
-    .work-table thead tr > *:nth-child(2){ border-top-left-radius: 16px; border-bottom-left-radius: 16px; }
-    .work-table tbody tr > *:nth-child(2){ border-top-left-radius: 16px; border-bottom-left-radius: 16px; }
-
 }
 
 
+/* ACTIVITIES / MUSEUMS / SIGHTSEEING PAGES */
 
-/* ACITIVITES / MUSEUMS / SIGHTSEEING PAGES */
-
-/* page layout */
+/* Page layout */
 .activities__cards{
-    max-width: 1200px; /* just change the main width to be wider than on the index and work spots pages */}
+    max-width: 1200px; /* Change the main width to be wider than on the index and work spots pages */
+}
 
 .page-title {
     text-align: center;
     margin: 24px 0 32px; padding-top: 80px;
 }
 
-/* masonry-style 3 columns */
+/* Masonry-style 3 columns */
+/* Followed these masonry layout tutorials:
+ * https://www.youtube.com/watch?v=c-OfB6Vq1tA
+ * https://youtube.com/shorts/NNLxPcEnZDY?si=Vd6mY-3x9eC6JTME*/
 .cards{
     columns: 250px;
     column-gap: var(--card-gap);
 }
 
-/* the item that flows in columns (no shadow here) */
+/* The item that flows in columns (no shadow here) */
 .card{
     display: block;
-    break-inside: avoid;
-    margin: 0 0 var(--card-gap);
+    break-inside: avoid; /* prevents browser from spliting element across columns (card stays intact)*/
+    margin-bottom: var(--card-gap); /* add a spacing below each card, to create a vertical gap between stacked cards while keeping the masonry layout */
 }
 
 /* the visual box */
@@ -577,13 +595,15 @@ main{
     padding: 40px;
 }
 
-/* status-based automatic styling (from your data-status)
- * so the purpose of these data attributes is that in the future,
- * I want to be able to filter these entries using JS under tags.
- * I.e. if i loved it, then you can filter for the ones I loved;
- * if I haven't tried it yet and you want to do that activity with me, then
- * we can filter by to try. */
-.card[data-status="to-do"] .card__surface { background: var(--lightgrey); }
+/* Style rows based on their data-status value ("loved" and "to-try").
+ * Plan to enable future JS filtering by status, hence why data attributes were needed. */
+
+/* Using data-* attributes to style cards and enable future filtering.
+ * Ref: https://css-tricks.com/a-complete-guide-to-data-attributes/
+ * and
+ * https://dev.to/dev-harbiola/custom-data-attributes-in-html-a-guide-to-data--373 */
+
+.card[data-status="to-try"] .card__surface { background: var(--lightgrey); }
 .card[data-status="loved"] .card__surface { background: var(--lightblue); }
 .card[data-status="loved"] .card__media img {
     filter: grayscale(100%);
@@ -603,7 +623,7 @@ main{
 .card__tags { display: flex; gap: 8px; flex-wrap: wrap; color: var(--darkgrey); }
 .card__title { margin: 32px 0 16px; }
 
-/* media: image fills card width, height hugs content */
+/* Media: image fills card width, height hugs content */
 .card__media { margin: 0; }
 .card__media img{
     display: block;
@@ -611,27 +631,21 @@ main{
     height: auto; /* hug height */
     border-radius: 8px;
 }
-.card__credit { font-size: .75rem; color: var(--darkgrey); margin-top: 6px;}
-.card__body { line-height: 1.5; }
 
-.card__surface a{
-    position: relative;
-}
-
-/* hover/active interactions that apply only to the card surface */
+/* Hover/active interactions that apply only to the card surface */
 .card:hover .card__surface{
     box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-    transition: filter .25s ease, opacity .25s ease;
+    transition: box-shadow .25s ease;
 }
 
-/* fade others - the has(.card:hover) function serves like an if function;
+/* Fade others - the has(.card:hover) function serves like an if function;
  * if one card is hovered, the the other cards will have surface opacity of .5 */
 .cards:has(.card:hover) .card:not(:hover) .card__surface{
     opacity: .50;
     transition: opacity .5s ease;
 }
 
-/* responsive behaviour: I want the padding to be a little thinner on the cards
+/* Responsive behaviour: I want the padding to be a little thinner on the cards
  * so the text and images can take up more space */
 @media (max-width: 1000px){
     .card__surface{
@@ -640,6 +654,8 @@ main{
 }
 
 /* REDUCED MOTION - CSS consolidated at the bottom */
+/* Rules adapted from:
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce){
     .notes > article{ transition: none; }
     .cards:has(.card:hover) .card:not(:hover) .card__surface{ transition: none;}

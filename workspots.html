@@ -1,27 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Work Spots</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-
+<head>
+    <meta charset="UTF-8">
+    <title>Work Spots</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+</head>
     <body>
     <header>
-        <nav aria-label="Primary">
-            <!-- hamburger button for mobile -->
-
-            <!-- this is a label acting as the button. <label for="nav-toggle"> binds
-            the label onto the checkbox. the label is the little ☰ (hamburger) -->
+        <nav aria-label="Navigation Bar">
+            <!-- Hamburger menu for mobile
+                Adapted from this tutorial: https://threkk.medium.com/how-to-make-a-css-only-hamburger-menu-f7ad41e13399 -->
             <label for="nav-toggle" class="hamburger" aria-label="Toggle navigation">☰</label>
-
-            <!-- this means it's hidden with css and then becomes
-            the menu open and close state. ie if the nav-toggle is checked, then
-            we can have something appear or an action be done or something-->
             <input type="checkbox" id="nav-toggle" class="nav-toggle">
 
-            <!-- this is an unordered list (requirement), but will also become our fixed navbar -->
+
+            <!-- Fixed navbar -->
             <ul class="nav-menu text-small-header" id="nav-menu">
                 <li><a href="index.html">ABOUT</a></li>
                 <li><a href="activities.html">ACTIVITIES</a></li>
@@ -33,15 +27,15 @@
     </header>
 
         <main>
-            <!-- page title -->
+            <!-- Page title -->
             <h1 class="page-title text-header">work spots</h1>
-            <!-- table -->
-            <table class="work-table text-small-header">
+            <!-- Table -->
+            <table class="work-table text-small-header" aria-label="List of Work Spots">
                 <thead>
                     <tr>
+                        <th>NAME</th>
                         <th>BOROUGH</th>
                         <th>LOCATION</th>
-                        <th>NAME</th>
                         <th>HOURS</th>
                         <th>WIFI</th>
                         <th>TYPE</th>
@@ -52,9 +46,9 @@
 
                     <!-- ENTRIES -->
                     <tr data-status="loved" class="text-body">
+                        <th scope="row"><a href="https://poetshouse.org/">Poet’s House</a></th>
                         <td>Manhattan</td>
                         <td><a href="https://maps.app.goo.gl/38mSZPjE1tqJpn6K7">10 River Ter., New York, NY 10282 </a></td>
-                        <td><a href="https://poetshouse.org/">Poet’s House</a></td>
                         <td>Tue-Fri: 11:00a - 7:00p <br> Sat: 11:00a - 6:00p</td>
                         <td>Yes</td>
                         <td>Public library</td>
@@ -62,9 +56,9 @@
                     </tr>
 
                     <tr data-status="loved" class="text-body">
+                        <th scope="row"><a href="https://www.swissinstitute.net/">Swiss Institute</a></th>
                         <td>Manhattan</td>
                         <td><a href="https://maps.app.goo.gl/CezAHHEMJR2i5kDQ6">38 St Marks Pl, New York, NY 10003</a></td>
-                        <td><a href="https://www.swissinstitute.net/">Swiss Institute</a></td>
                         <td>Wed-Fri: 2:00p - 8:00p <br> Sat: 12:00p - 8:00p <br> Sun: 12:00p - 6:00p</td>
                         <td>Yes</td>
                         <td>Contemporary art space & reading room</td>
@@ -72,9 +66,9 @@
                     </tr>
 
                     <tr data-status="to-try" class="text-body">
+                        <th scope="row"><a href="https://www.themorgan.org">Morgan Library</a></th>
                         <td>Manhattan</td>
                         <td><a href="https://maps.app.goo.gl/Ygb2EtU19tABSKQ56">225 Madison Ave, New York, NY 10016</a></td>
-                        <td><a href="https://www.themorgan.org">Morgan Library</a></td>
                         <td>Sat-Thur: 10:30a - 5:00p <br> Fri: 10:30a - 8:00p</td>
                         <td>Yes</td>
                         <td>Public library</td>
@@ -82,9 +76,9 @@
                     </tr>
 
                     <tr data-status="loved" class="text-body">
+                        <th scope="row"><a href="https://www.pratt.edu/information/about-the-school-of-information/location-and-facilities/">Pratt Manhattan</a></th>
                         <td>Manhattan</td>
                         <td><a href="https://maps.app.goo.gl/mTqNhmqbhoAe9SiS7">144 W 14th St, New York, NY 10011</a></td>
-                        <td><a href="https://www.pratt.edu/information/about-the-school-of-information/location-and-facilities/">Pratt Manhattan</a></td>
                         <td>Mon-Fri 7:30a - 1:00p <br> Sat-Sun: 8:00a - 11:00p</td>
                         <td>Yes</td>
                         <td>School (Pratt students only)</td>
@@ -92,9 +86,9 @@
                     </tr>
 
                     <tr data-status="loved" class="text-body">
+                        <th scope="row"><a href="https://canteenm.restaurants-world.com/">canteenM</a></th>
                         <td>Manhattan</td>
                         <td><a href="https://maps.app.goo.gl/uNW5WtpTo6cpsNt39">189 Bowery #2F, New York, NY 10002</a></td>
-                        <td><a href="https://canteenm.restaurants-world.com/">canteenM</a></td>
                         <td>Mon-Sun 24h</td>
                         <td>Yes</td>
                         <td>Bar inside CitizenM hotel</td>
@@ -102,9 +96,9 @@
                     </tr>
 
                     <tr data-status="loved" class="text-body">
+                        <th scope="row"><a href="https://publichotels.com">Public Hotel</a></th>
                         <td>Manhattan</td>
                         <td><a href="https://maps.app.goo.gl/kbheFE7tNPUHWEHN8">215 Chrystie St, New York, NY 10002</a></td>
-                        <td><a href="https://publichotels.com">Public Hotel</a></td>
                         <td>Mon-Sun 24h</td>
                         <td>Yes</td>
                         <td>Hotel lobby</td>
@@ -112,18 +106,18 @@
                     </tr>
 
                     <tr data-status="to-try" class="text-body">
+                        <th scope="row"><a href="https://thehighlinehotel.com/">The High Line Hotel</a></th>
                         <td>Manhattan</td>
                         <td><a href="https://maps.app.goo.gl/rYyBh6ZmMDxXqZ7q7">180 10th Ave, New York, NY 10011</a></td>
-                        <td><a href="https://thehighlinehotel.com/">The High Line Hotel</a></td>
                         <td>Mon-Sun 24h</td>
                         <td>Yes</td>
                         <td>Hotel lobby</td>
                         <td><span class="status">to-try</span></td>
 
                     <tr data-status="to-try" class="text-body">
+                        <th scope="row"><a href="https://arlohotels.com/soho/">Arlo Soho</a></th>
                         <td>Manhattan</td>
                         <td><a href="https://maps.app.goo.gl/9LJ6pkNFCpYaScTm7">231 Hudson St, New York, NY 10013</a></td>
-                        <td><a href="https://arlohotels.com/soho/">Arlo Soho</a></td>
                         <td>Mon-Sun 24h</td>
                         <td>Yes</td>
                         <td>Hotel lobby and library</td>
