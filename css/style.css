@@ -52,11 +52,11 @@
 
     --blue:#BAE4F8;
     --lightblue: #D6F2FF;
-    --black:#353131;
+    --black:#3A0808;
     --white: #FDFDFD;
-    --darkgrey: #98A1AE;
-    --green: #0F8866;
-    --lightgrey: #EDEFF1;
+    --darkgrey: #126098;
+    --accent: #D70743;
+    --lightgrey: #F0F3F5;
 
     /*Gaps for pages with cards or rows*/
     --card-gap: 32px; /* Gap between different cards on activities, museum, sightseeing */
@@ -138,7 +138,7 @@ a {
 a:hover,
 a:focus-visible {
     text-decoration: underline;
-    color: var(--green);
+    color: var(--accent);
 }
 
 
@@ -164,12 +164,12 @@ header {
 
 .nav-menu a:hover,
 .nav-menu a:focus{
-    color: var(--green);
+    color: var(--accent);
     font-weight: 700;
 }
 
 .nav-menu a[aria-current="page"] {
-    color: var(--green);
+    color: var(--accent);
     font-weight: 700;
     text-decoration: underline;
     text-underline-offset: 4px;
@@ -511,6 +511,7 @@ main{
 .work-table tbody tr:hover {
     box-shadow: 0 8px 16px rgba(0,0,0,0.15);
     transition: box-shadow .25s ease;
+    border-radius: 16px;
 }
 
 /* Sticky table header */
@@ -631,6 +632,9 @@ main{
     height: auto; /* hug height */
     border-radius: 8px;
 }
+
+/* Text that goes under media, to give credit to original author */
+.card__credit { color: var(--darkgrey); margin: 8px 0; hyphens: auto;}
 
 /* Hover/active interactions that apply only to the card surface */
 .card:hover .card__surface{
