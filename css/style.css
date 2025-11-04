@@ -4,6 +4,7 @@
         src: url('/fonts/OpenSauceOne-Light.ttf') format('truetype');
         font-weight: 300; /* Light */
         font-style: normal;
+        font-display: swap; /* Added swap as per accessibility recommendations */
     }
 
     @font-face {
@@ -11,6 +12,7 @@
         src: url("/fonts/OpenSauceOne-Regular.ttf") format("truetype");
         font-weight: 400;
         font-style: normal;
+        font-display: swap; /* Added swap as per accessibility recommendations */
     }
 
     @font-face {
@@ -18,13 +20,7 @@
         src: url('/fonts/OpenSauceOne-Medium.ttf') format('truetype');
         font-weight: 500;
         font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Open Sauce One';
-        src: url('/fonts/OpenSauceOne-SemiBold.ttf') format('truetype');
-        font-weight: 600;
-        font-style: normal;
+        font-display: swap; /* Added swap as per accessibility recommendations */
     }
 
     @font-face {
@@ -32,6 +28,7 @@
         src: url('/fonts/OpenSauceOne-Bold.ttf') format('truetype');
         font-weight: 700;
         font-style: normal;
+        font-display: swap; /* Added swap as per accessibility recommendations */
     }
 
     @font-face {
@@ -39,12 +36,14 @@
         src: url('/fonts/BellavoirDelight.otf') format('opentype');
         font-weight: 400;
         font-style: normal;
+        font-display: swap; /* Added swap as per accessibility recommendations */
     }
 
 /* UNIVERSAL FONT STYLES / GUIDES */
 :root{
-    --font-sans: "Open Sauce One", system-ui, sans-serif;
-    --font-serif: "Bellavoir Delight", serif;
+    /* Picked some fallback fonts from https://www.w3schools.com/css/css_font_fallbacks.asp */
+    --font-sans: "Open Sauce One", Arial, Helvetica, sans-serif;
+    --font-serif: "Bellavoir Delight", Georgia, serif;
 
     /* Letter-spacing tokens */
     --ls-wide: 0.01em; /* +1%  */
@@ -165,12 +164,11 @@ header {
 .nav-menu a:hover,
 .nav-menu a:focus{
     color: var(--accent);
-    font-weight: 700;
 }
 
 .nav-menu a[aria-current="page"] {
     color: var(--accent);
-    font-weight: 700;
+    font-weight: 700; /* Bold */
     text-decoration: underline;
     text-underline-offset: 4px;
 }
@@ -234,11 +232,18 @@ header nav {
     }
 
     nav .nav-menu li {
-        width: 100%;
+        display: block;
         text-align: center;
         padding: .5em;
     }
 
+    /*When the checkbox input is NOT checked, then you should select
+     * the next element with class .nav-menu and hide that element.
+     * This works because in the HTML, code is in this order:
+     *      <label for="nav-toggle" class="hamburger" aria-label="Toggle navigation">☰</label>
+     *      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+     *      <ul class="nav-menu text-small-header" id="nav-menu">
+     * otherwise if it is checked, then show the nav-menu.*/
     nav input[type="checkbox"]:not(:checked) + .nav-menu { display: none;}
 }
 
@@ -257,14 +262,14 @@ footer {
 /* Page layout */
 main{
     max-width: 850px;
-    width: 100%;
+    display: block;
     margin: 0 auto;
     padding: 0 24px 24px;
     box-sizing: border-box; /* Keeps padding inside the 1000px cap */
 }
 
 .hero-container{
-    width: 100%;
+    display: block;
     margin-inline: 0;
     padding-inline: 0;
     padding-top: 112px;
@@ -272,17 +277,16 @@ main{
 
 .hero-title span{
     display: block;
-    width: 100%;
     margin-inline: auto;
 }
 
 /* Top line */
 .hero-title-sans{
     display: block;
-    margin-bottom: 0; /* no extra space */
-    line-height: .85; /* tighter */
+    margin-bottom: 0; /* No extra space */
+    line-height: .85; /* Tighter */
     font-family: 'Open Sauce One', sans-serif;
-    font-weight: 700;
+    font-weight: 700; /* Semibold */
     font-style: normal;
     font-size: clamp(32px, 6vw, 120px); /* Learned of clamp() function
                                          * through https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
@@ -323,7 +327,6 @@ main{
 }
 
 .notes{
-    width: 100%;
     margin-inline: 0;
     padding-inline: 0;
     display: flex;
@@ -369,7 +372,6 @@ main{
     padding: 24px 32px;
     border-radius: 8px;
     /* keep width responsive */
-    width: 100%;
     max-width: 600px; /* hug tight, but don’t stretch too wide */
     min-width: 0;
     margin: 0 auto;
@@ -485,7 +487,7 @@ main{
 /* Status pill on the right */
 .work-table td:last-child{ text-align: left; }
 .work-table .status{
-    display: inline-block;
+    display: inline-block; /* Sits side by side with other text, but can style it like a block (e.g. autolayout Frame button on Figma) */
     padding: 10px 16px;
     background: var(--white);
     color: var(--black);
@@ -583,14 +585,14 @@ main{
     column-gap: var(--card-gap);
 }
 
-/* The item that flows in columns (no shadow here) */
+/* Behaviour of all cards in the masonry columns */
 .card{
     display: block;
     break-inside: avoid; /* prevents browser from spliting element across columns (card stays intact)*/
     margin-bottom: var(--card-gap); /* add a spacing below each card, to create a vertical gap between stacked cards while keeping the masonry layout */
 }
 
-/* the visual box */
+/* A single card itself */
 .card__surface{
     border-radius: 16px;
     padding: 40px;
@@ -628,8 +630,8 @@ main{
 .card__media { margin: 0; }
 .card__media img{
     display: block;
-    width: 100%; /* fill width */
-    height: auto; /* hug height */
+    width: 100%; /* Fill width */
+    height: auto; /* Hug height */
     border-radius: 8px;
 }
 
@@ -642,7 +644,7 @@ main{
     transition: box-shadow .25s ease;
 }
 
-/* Fade others - the has(.card:hover) function serves like an if function;
+/* Fade others - the has(.card:hover) function serves like an if() function;
  * if one card is hovered, the the other cards will have surface opacity of .5 */
 .cards:has(.card:hover) .card:not(:hover) .card__surface{
     opacity: .50;
