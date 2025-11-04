@@ -28,6 +28,7 @@ HTML:
     - Links and images*, as appropriate
     - Copyright symbol, your name, and the current year at the end of every page
     - *Images must adhere to copyright law. Use your own multi-media work or freely reusable images (e.g. Creative Commons licensed work, DALL-E images you create, etc.)
+
 CSS:
 - Your HTML files should link to your external css file in the head of your file (e.g., <link rel="stylesheet" type="text/css" href="screen.css">) and all CSS styles should be contained in this one external CSS file that is used across every page in your site.
 - Your CSS file must validate according to the http://jigsaw.w3.org/css-validator/ validator.
