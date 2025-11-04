@@ -40,14 +40,11 @@ CSS:
 
 ## Process
 
-It was important to me to make this accessible and scalable
-for my own purposes. I wanted to share this with friends,
-so it had to be mobile-friendly. And I wanted to be able to add
-more entries and potentially sort them in the future with filters/tags, so I explored what
+It was important to me to make this accessible and scalable for my own purposes. I wanted to share this with friends,
+so it had to be mobile-friendly. And I wanted to be able to add more entries and potentially sort them in the future with filters/tags, so I explored what
 kinds of database-like patterns or workarounds I could use without a backend.
 
 I began by designing a mockup in Figma, collecting all my must-visit places in Apple Notes, and then building the website using HTML and CSS.
-
 Throughout the development process, I asked questions to my partner and friends,
 and referenced online videos and tutorials. Any explicitly referenced snippets are credited in-source as comments.
 More specific solutions were workshopped by me (alone or with peers for advice).
@@ -60,7 +57,7 @@ and advice to bring my Figma idea to life was really fulfilling.
 
 ## Next Steps
 
-- Add JavaScript to filter entries by status (e.g., “to-try” vs. “favorites”)
+- Add JavaScript to filter entries by status (e.g., “to-try” vs. “loved”)
 - Add a location data attribute to explore spots by neighborhood/area
 - Continue improving design and accessibility as I learn more 😁
 
