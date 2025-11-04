@@ -316,14 +316,14 @@ main{
     .hero-title-serif { margin-top: -0.22em; }
 }
 
-.tag-grey{
+#tag-grey{
     background: var(--lightgrey);
-    padding: 4px;
+    padding: .25px;
 }
 
-.tag-blue{
+#tag-blue{
     background: var(--lightblue);
-    padding: 4px;
+    padding: .25px;
 }
 
 .notes{
