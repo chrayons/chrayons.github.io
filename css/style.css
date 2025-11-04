@@ -57,7 +57,7 @@
     --accent: #D00C30;
     --lightgrey: #F0F3F5;
 
-    /*Gaps for pages with cards or rows*/
+    /* Gaps for pages with cards or rows */
     --card-gap: 32px; /* Gap between different cards on activities, museum, sightseeing */
     --row-gap: 18px; /* Vertical space between rows in the work spots table */
 }
@@ -298,7 +298,7 @@ main{
 /* Second line */
 .hero-title-serif{
     display: block;
-    margin-top: -0.28em; /* overlap for the top */
+    margin-top: -0.28em; /* Overlap for the top */
     margin-bottom: clamp(16px, 2.5vw, 40px);
     line-height: .8; /* tight line box */
     font-family: 'Bellavoir Delight', serif;
@@ -332,12 +332,14 @@ main{
     display: flex;
     gap: 0;
     justify-content: center;
-    align-items: flex-start; /* don't force equal heights */
+    align-items: flex-start; /* Don't force equal heights */
     margin-top: 40px;
     overflow-x: visible;
     overflow-y: visible;
     margin-bottom: 80px;
-    position: relative; /* enables z-index on children */
+    position: relative; /* Easier way to understand this line is that it creates
+                         * a new positioning context so rotated cards can layer
+                         * z-index relative to container instead of the entire page*/
 }
 
 /* Using the > child selector for more targeted styling.
@@ -371,28 +373,19 @@ main{
     background: var(--white);
     padding: 24px 32px;
     border-radius: 8px;
-    /* keep width responsive */
-    max-width: 600px; /* hug tight, but don’t stretch too wide */
+    max-width: 380px; /* Updated this value because needs to be smaller than outer card */
     min-width: 0;
-    margin: 0 auto;
     box-sizing: border-box;
+    margin: 0 auto; /* Centers the card horizontally in the layout */
 }
 
-/* remove browser default extra margins that add phantom space */
-.note-inner h2 {
-    margin-bottom: 12px;
-    line-height: 1.5;
-}
 .note-inner ul,
 .note-inner ol {
-    margin: 0;
-    padding-left: 1.25rem; /* keep bullets indented without big margins */
-}
-.note-inner li {
-    margin: 8px 0;
+    padding-left: 1.25rem; /* Keep bullets indented without big margins */
 }
 
-/* mobile: undo the effect so they can be stacked */
+/* Mobile: undo the translate effect and change the flexbox direction to column
+ * instead of default row so cards can be stacked vertically */
 @media (max-width: 900px){
   .notes{
       flex-direction: column;
@@ -400,25 +393,23 @@ main{
       align-items: center;
       padding-inline: 16px;
       width:100%;
-      overflow-x: clip;
+      overflow-x: clip; /* Prevents horizontal scroll */
     }
 
-    /* left card: pin to left edge, keep tilt (no overlap translate) */
+    /* Left card: pin to left edge, keep tilt */
     .note-grey{
         margin-left: 0;
         margin-right: auto; /* left aligned */
         transform: rotate(-6deg);
     }
 
-    /* right card: pin to right edge, keep tilt (no overlap translate) */
+    /* Right card: pin to right edge, keep tilt */
     .note-blue{
-        /* add a margin so that it's not sooo right aligned*/
-        margin-right: 32px;
-        margin-left: auto; /* right aligned */
+        margin-right: 32px; /* Add a margin so that it's not sooo right aligned*/
+        margin-left: auto; /* Right aligned */
         transform: rotate(7deg);
     }
-
-    /* let the inner fill the card; remove desktop cap */
+    /* Let the inner fill the card; remove desktop cap */
     .note-inner{
         max-width: none;
     }
@@ -434,8 +425,8 @@ main{
 /* Header bar */
 .work-table{
     width: 100%;
-    border-collapse: separate; /* rounded corners + spacing */
-    border-spacing: 0 var(--row-gap); /* space BETWEEN rows (not inside) */
+    border-collapse: separate; /* Rounded corners + spacing */
+    border-spacing: 0 var(--row-gap); /* Space BETWEEN rows (not inside) */
     color: var(--black);
     position: relative;
 }
@@ -452,7 +443,7 @@ main{
 
 .work-table tbody td,
 .work-table tbody th[scope="row"]{
-    background-clip: padding-box; /* make sure cell backgrounds don’t bleed past corners */
+    background-clip: padding-box; /* Make sure cell backgrounds don’t bleed past corners */
     padding: 18px 16px;
     vertical-align: middle;
     border: none;
@@ -617,8 +608,8 @@ main{
     filter: grayscale(0%);
 }
 
-/* tags + title
- * in the future, should also consider making these tags into data attributes -
+/* Tags + title
+ * In the future, should also consider making these tags into data attributes -
  * so that you can also filter with tags for different boroughs. That way
  * I can search through which neighbourhoods I'm nearby,
  * or maybe a friend can look through it and see which borough they want to
